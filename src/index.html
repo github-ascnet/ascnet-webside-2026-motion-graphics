@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ASCNET Solutions GmbH",
+    "description": "IT-Experten für Exchange, Teams, IAM, Entwicklung, Business Intelligence.",
+    "url": "https://ascnet.ch",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "c/o Sarya AG, Chamerstrasse 174",
+        "postalCode": "6300",
+        "addressLocality": "Zug",
+        "addressCountry": "CH"
+    },
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "info@ascnet.ch"
+    },
+    "makesOffer": [
+        { "@type": "Service", "name": "Messaging & Kollaboration" },
+        { "@type": "Service", "name": "Identitätsmanagement (IAM)" },
+        { "@type": "Service", "name": "Softwareentwicklung (.NET, JavaScript, React, Next.js, PowerShell)" },
+        { "@type": "Service", "name": "Business Intelligence (MS SQL, DWH, Power BI)" }
+    ]
+    }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASCNET Solutions GmbH – Experten für Microsoft Exchange, Teams, Identity & Access Management, .NET Entwicklung, Business Intelligence und Data Warehouse. Ihr Partner für Digitalisierung, Integration und Automatisierung.">
+    <meta name="keywords" content="Microsoft Exchange, Teams, IAM, Active Directory, Entra ID, ADFS, .NET, C#, JavaScript, React, Next.js, PowerShell, Business Intelligence, MS SQL, Data Warehouse, SSIS, SSAS, Power BI, Digitalisierung, Automatisierung, Integration, Expertenprofil">
+    <meta name="author" content="ASCNET Solutions GmbH">
+    <meta name="theme-color" content="#222222">
+    <title>ASCNET Solutions GmbH</title>
+
+    <!-- Intro vor dem ersten Paint entscheiden: einmal pro Session, nie bei
+         reduzierter Bewegung. Das kritische Intro-CSS steht inline, weil
+         main.css erst per JS (style-loader) eingefügt wird. -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add("js");
+            var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            // ?intro in der Adresse spielt das Intro immer ab
+            var forceIntro = /[?&]intro(=|&|$)/.test(location.search);
+            try {
+                if (!forceIntro && (sessionStorage.getItem("ascnet-fs-intro-seen") || reduced)) {
+                    d.classList.add("skip-intro");
+                }
+            } catch (e) {}
+            // Motion (Fasern): gespeicherte Wahl, sonst an
+            try {
+                var m = localStorage.getItem("ascnet-motion");
+                if (m === "off" || (!m && reduced)) d.classList.add("motion-off");
+            } catch (e) {}
+        })();
+    </script>
+    <style>
+        html, body { background: #222222; }
+        #intro { position: fixed; inset: 0; z-index: 100; background: #222222; animation: introFailsafe 0s 9s forwards; }
+        html:not(.js) #intro, html.skip-intro #intro { display: none; }
+        @keyframes introFailsafe { to { visibility: hidden; opacity: 0; pointer-events: none; } }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <!-- Styles kommen gebündelt über main.js (style-loader) -->
+</head>
+
+<body>
+
+    <!-- Future-State: Glasfaser-Bündel im Hintergrund -->
+    <canvas id="fiberCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+    <div class="fx-shade" aria-hidden="true"></div>
+
+    <!-- Intro (ca. 5 s) -->
+    <div id="intro">
+        <div class="intro-stage" aria-hidden="true">
+            <ol class="intro-log">
+                <li style="--i:0"><span>[ 001/004 ]</span><b>Collaboration</b><em>verbunden</em></li>
+                <li style="--i:1"><span>[ 002/004 ]</span><b>Identity</b><em>verbunden</em></li>
+                <li style="--i:2"><span>[ 003/004 ]</span><b>Development</b><em>verbunden</em></li>
+                <li style="--i:3"><span>[ 004/004 ]</span><b>Business Intelligence</b><em>verbunden</em></li>
+            </ol>
+            <p class="intro-mark">
+                <strong>(ASCNET<i>_</i>)</strong>
+                <span>Innovation verbindet // Wissen bewegt</span>
+            </p>
+        </div>
+        <!-- HUD-Loader: täuscht das Laden der fünf Kapitel vor -->
+        <div class="intro-loader" aria-hidden="true">
+            <div class="loader-head">
+                <span>[ SYS ] Kapitel laden</span>
+                <span class="loader-state" id="loaderState">INIT</span>
+            </div>
+            <div class="loader-body">
+                <div class="loader-dial">
+                    <svg class="loader-ring" id="loaderRing" viewBox="0 0 120 120"></svg>
+                    <div class="loader-center"><b id="loaderCount">00</b><span>/05</span></div>
+                </div>
+                <ol class="loader-rows">
+                    <li data-loader-row><span class="lr-no">01</span><span class="lr-name">Start</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">02</span><span class="lr-name">Mehrwert</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">03</span><span class="lr-name">Leistungen</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">04</span><span class="lr-name">Preise</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">05</span><span class="lr-name">Kontakt</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                </ol>
+            </div>
+        </div>
+        <div class="intro-foot" aria-hidden="true">
+            <span class="intro-count" id="introCount">0 %</span>
+            <div class="intro-bar"><i></i></div>
+        </div>
+        <button type="button" class="intro-skip" id="introSkip">Intro überspringen</button>
+    </div>
+
+    <!-- Kopfzeile -->
+    <header id="topbar" class="topbar">
+        <a href="#hero" class="brand" aria-label="ASCNET Solutions GmbH – zum Start">
+            <img src="img/Logo_smart_dark.png" alt="ASCNET – Digital Solutions for Smart People" class="brand-logo" width="560" height="223">
+        </a>
+        <nav class="top-nav hidden md:flex" aria-label="Kapitel">
+            <a href="#mehrwert">mehrwert <i aria-hidden="true">↗</i></a>
+            <a href="#leistungen">leistungen <i aria-hidden="true">↗</i></a>
+            <a href="#preise">preise <i aria-hidden="true">↗</i></a>
+            <a href="#kontakt">kontakt <i aria-hidden="true">↗</i></a>
+        </nav>
+        <button id="menu-btn" class="burger flex md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
+            <i></i><i></i>
+        </button>
+    </header>
+
+    <!-- Mobile Kapitelauswahl -->
+    <nav id="mobile-menu" class="menu-overlay flex md:hidden" aria-hidden="true" aria-label="Kapitelauswahl">
+        <div class="menu-inner">
+            <p class="menu-eyebrow">[ Kapitel ]</p>
+            <ul class="menu-list">
+                <li><a href="#hero"><em>01</em><span>Start</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#mehrwert"><em>02</em><span>Mehrwert</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#leistungen"><em>03</em><span>Leistungen</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#preise"><em>04</em><span>Preise</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#kontakt"><em>05</em><span>Kontakt</span><i aria-hidden="true">↗</i></a></li>
+            </ul>
+            <div class="menu-foot">
+                <a href="#kontakt" class="btn btn-line w-full">Kontakt aufnehmen</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dock: Kapitel-Timeline mit Playhead (scrubbar) -->
+    <div id="timeline" class="dock">
+        <div class="dock-inner">
+            <div class="dock-chapter" aria-hidden="true">
+                <span class="lamp"></span>
+                <span class="dock-no"><b id="chapterNo">01</b><span id="chapterOf">/05</span></span>
+                <span class="dock-title hidden md:inline-block" id="chapterTitle">Start</span>
+            </div>
+            <div class="tl-track" id="tlTrack">
+                <div class="tl-rail" aria-hidden="true"></div>
+                <div class="tl-progress" id="tlProgress" aria-hidden="true"></div>
+                <div class="tl-markers" id="tlMarkers"></div>
+                <div class="tl-playhead" id="tlPlayhead" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="fx-toggle" id="motionToggle" aria-pressed="true" title="Animation ein-/ausschalten">
+                <span class="fx-dot" aria-hidden="true"></span>
+                <span class="hidden md:inline">Motion</span><span class="md:hidden">FX</span>
+            </button>
+            <span class="dock-readout hidden sm:inline" aria-hidden="true">[ <span data-readout>0 %</span> ]</span>
+        </div>
+    </div>
+
+    <main id="film">
+
+        <!-- 01: Hero -->
+        <section id="hero" data-scene data-scene-title="Start" class="hero">
+            <div class="hero-copy">
+                <p class="hero-kicker">[ IT-Beratung &amp; Engineering · Zug ]</p>
+                <h1 class="hero-title">
+                    <span>Innovation</span>
+                    <span class="in-1"><em>verbindet</em></span>
+                    <span>// Wissen</span>
+                    <span class="in-2"><em>bewegt</em></span>
+                </h1>
+            </div>
+            <aside class="hero-meta" aria-label="Kurzprofil">
+                <div class="meta-head"><span>( 01 )</span><span>[ 20+ Jahre ]</span></div>
+                <p>Collaboration, Identity, Development und Business Intelligence – mit mehr als 20&nbsp;Jahren Erfahrung bringen wir Ihre Projekte in Bewegung.</p>
+                <a href="#kontakt" class="btn btn-line w-full">Kontakt aufnehmen</a>
+            </aside>
+            <a href="#mehrwert" class="hero-down" aria-label="Weiter zu Mehrwert">↓</a>
+        </section>
+
+        <!-- 02: Mehrwert -->
+        <section id="mehrwert" data-scene data-scene-title="Mehrwert" class="section">
+            <div class="container-x">
+                <header class="sec-head" data-reveal>
+                    <span class="sec-tag">[ 02 ] ( Mehrwert )</span>
+                    <span class="sec-count">002/005</span>
+                </header>
+                <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+                    <div>
+                        <h2 class="h2" data-reveal>Ihr Nutzen ist <br class="hidden md:inline">unser <em>massstab</em></h2>
+                        <p class="lead" data-reveal style="--reveal-delay:0.15s">Mit mehr als 20 Jahren Erfahrung bringen wir Orientierung, Klarheit und Entscheidungsstärke in jedes Projekt. Wir denken nicht in Silos, sondern handeln agil und partnerschaftlich. Unser Ziel: den größtmöglichen Mehrwert für Sie und Ihr Unternehmen zu schaffen.</p>
+                    </div>
+                    <div class="frame value-box" data-reveal style="--reveal-delay:0.2s">
+                        <div class="value-stat"><b>20+</b><span>[ Jahre Erfahrung ]</span></div>
+                        <ul class="value-rows">
+                            <li><span>( A )</span>Orientierung</li>
+                            <li><span>( B )</span>Klarheit</li>
+                            <li><span>( C )</span>Entscheidungsstärke</li>
+                        </ul>
+                        <p class="value-foot">agil // partnerschaftlich // ohne Silos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03: Leistungen -->
+        <section id="leistungen" data-scene data-scene-title="Leistungen" class="section">
+            <div class="container-x">
+                <header class="sec-head" data-reveal>
+                    <span class="sec-tag">[ 03 ] ( Leistungen )</span>
+                    <span class="sec-count">003/005</span>
+                </header>
+                <h2 class="h2 mb-12" data-reveal>Vier Felder <em>ein</em> // Partner</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0s">
+                        <div class="service-top"><span>[ 001/004 ]</span><i aria-hidden="true">↗</i></div>
+                        <h3>Collaboration-Management</h3>
+                        <p>Wir kombinieren Beratung, Integration und Betrieb, um Unternehmen jeder Größe moderne Kommunikationslösungen bereitzustellen – sicher, flexibel und zukunftsfähig.</p>
+                        <button class="skill-btn link-line" data-area="messaging">( Details )</button>
+                    </article>
+                    <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.08s">
+                        <div class="service-top"><span>[ 002/004 ]</span><i aria-hidden="true">↗</i></div>
+                        <h3>Identity-Management</h3>
+                        <p>Wir unterstützen Unternehmen dabei, Identitäten zentral zu verwalten und Zugänge zuverlässig zu steuern – mit leistungsfähigen IAM-Lösungen, die mit Ihren Anforderungen wachsen.</p>
+                        <button class="skill-btn link-line" data-area="iam">( Details )</button>
+                    </article>
+                    <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.16s">
+                        <div class="service-top"><span>[ 003/004 ]</span><i aria-hidden="true">↗</i></div>
+                        <h3>Development</h3>
+                        <p>Wir realisieren BI-, IAM- und Kommunikationslösungen sowie individuelle Web-Applikationen – von der Konzeption über Beratung und Umsetzung bis hin zu Workshops und Schulungen.</p>
+                        <button class="skill-btn link-line" data-area="development">( Details )</button>
+                    </article>
+                    <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.24s">
+                        <div class="service-top"><span>[ 004/004 ]</span><i aria-hidden="true">↗</i></div>
+                        <h3>Business Intelligence</h3>
+                        <p>Wir beraten, integrieren und entwickeln maßgeschneiderte BI-Lösungen, die Daten in Erkenntnisse verwandeln und Software in messbaren Nutzen überführen – effizient und flexibel.</p>
+                        <button class="skill-btn link-line" data-area="bi">( Details )</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04: Preise -->
+        <section id="preise" data-scene data-scene-title="Preise" class="section">
+            <div class="container-x">
+                <header class="sec-head" data-reveal>
+                    <span class="sec-tag">[ 04 ] ( Preise )</span>
+                    <span class="sec-count">004/005</span>
+                </header>
+                <div class="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-end mb-10">
+                    <h2 class="h2" data-reveal>Preise <em>transparent</em> // kalkuliert</h2>
+                    <p class="lead lg:mb-2" data-reveal style="--reveal-delay:0.15s">Dank unserem Preis-Kalkulator sehen Sie sofort, wie sich Ihr Projekt zusammensetzt – transparent, fair und nachvollziehbar.</p>
+                </div>
+
+                <div class="calc" data-reveal style="--reveal-delay:0.1s">
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="frame calc-cell">
+                            <label for="plzInput" class="field-label">Ihre Postleitzahl</label>
+                            <input id="plzInput" type="text" inputmode="numeric" pattern="\d{4}" maxlength="4" placeholder="PLZ" class="field" autocomplete="off" />
+                        </div>
+                        <div class="frame calc-cell">
+                            <label for="onsiteSlider" class="field-label">Onsite Anteil <span class="field-value"><span id="onsiteVal">0</span> %</span></label>
+                            <input type="range" min="0" max="100" step="1" value="0" id="onsiteSlider" class="range" />
+                        </div>
+                    </div>
+
+                    <div class="calc-mode">
+                        <div class="seg" role="group" aria-label="Abrechnung">
+                            <button id="modeHours" type="button" class="seg-btn">Stundensatz</button>
+                            <button id="modeDays" type="button" class="seg-btn">Tagessatz</button>
+                        </div>
+                        <div id="hoursPerDayWrap" class="hidden items-center gap-2">
+                            <label for="hoursPerDay" class="field-label mb-0">Stunden/Tag</label>
+                            <select id="hoursPerDay" class="field field-sm">
+                                <option value="7.5">7.5</option>
+                                <option value="8" selected>8</option>
+                                <option value="8.5">8.5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="frame calc-cell">
+                            <label for="msgSlider" class="field-label">Collaboration-Management <span class="field-value"><span id="msgVal">0</span> <span id="msgUnit">Std</span></span></label>
+                            <input type="range" min="0" max="500" step="1" value="0" id="msgSlider" class="range" />
+                        </div>
+                        <div class="frame calc-cell">
+                            <label for="iamSlider" class="field-label">Identity-Management <span class="field-value"><span id="iamVal">0</span> <span id="iamUnit">Std</span></span></label>
+                            <input type="range" min="0" max="500" step="1" value="0" id="iamSlider" class="range" />
+                        </div>
+                        <div class="frame calc-cell">
+                            <label for="devSlider" class="field-label">Development <span class="field-value"><span id="devVal">0</span> <span id="devUnit">Std</span></span></label>
+                            <input type="range" min="0" max="500" step="1" value="0" id="devSlider" class="range" />
+                        </div>
+                        <div class="frame calc-cell">
+                            <label for="biSlider" class="field-label">Business Intelligence <span class="field-value"><span id="biVal">0</span> <span id="biUnit">Std</span></span></label>
+                            <input type="range" min="0" max="500" step="1" value="0" id="biSlider" class="range" />
+                        </div>
+                    </div>
+
+                    <div class="frame calc-result">
+                        <h3><span>[ Σ ]</span> Zusammenfassung</h3>
+                        <pre id="result"></pre>
+                        <p class="calc-note">Alle Preise verstehen sich in CHF, exkl. MwSt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05: Kontakt -->
+        <section id="kontakt" data-scene data-scene-title="Kontakt" class="section">
+            <div class="container-x">
+                <header class="sec-head" data-reveal>
+                    <span class="sec-tag">[ 05 ] ( Kontakt )</span>
+                    <span class="sec-count">005/005</span>
+                </header>
+                <!-- Formular unten bündig mit der Karte -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:items-end">
+                    <div>
+                        <h2 class="h2" data-reveal>Bei Fragen <em>fragen</em></h2>
+                        <address class="address" data-reveal style="--reveal-delay:0.15s">
+                            ASCNET Solutions GmbH<br>
+                            c/o Sarya AG<br>
+                            Chamerstrasse 174<br>
+                            6300 Zug - Switzerland
+                        </address>
+                        <!-- Mapbox Karte -->
+                        <div id="map" class="frame map-frame" data-mapbox-token="<%= mapboxToken %>" data-reveal style="--reveal-delay:0.25s"></div>
+                    </div>
+                    <!-- Versand serverseitig über /api/contact (functions/api/contact.js), siehe docs/ -->
+                    <form id="contactForm" method="POST" action="/api/contact" name="contact" class="frame form-card" novalidate data-turnstile-sitekey="<%= turnstileSiteKey %>" data-reveal style="--reveal-delay:0.15s">
+                        <label for="name" class="field-label">Name</label>
+                        <input type="text" name="name" id="name" required maxlength="100" autocomplete="name" class="field mb-4">
+
+                        <label for="email" class="field-label">E-Mail</label>
+                        <input type="email" name="email" id="email" required maxlength="150" autocomplete="email" class="field mb-4">
+
+                        <label for="message" class="field-label">Ihre Nachricht</label>
+                        <textarea name="message" id="message" rows="5" required maxlength="512" class="field mb-5"></textarea>
+
+                        <!-- Cloudflare Turnstile: erscheint nur, wenn eine Prüfung nötig ist -->
+                        <div class="turnstile-slot" id="turnstileSlot"></div>
+                        <!-- Honeypot gegen Spam-Bots, für Menschen unsichtbar -->
+                        <div class="hp-field" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-fill w-full">Absenden <span aria-hidden="true">↗</span></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container-x flex flex-col md:flex-row items-center justify-between gap-2">
+            <div class="md:w-1/3 text-left">©2026 ASCNET Solutions GmbH</div>
+            <div class="md:w-1/3 text-center">
+                <a href="impressum.html" class="mx-2">Impressum</a>
+                <span class="mx-1" aria-hidden="true">//</span>
+                <a href="datenschutz.html" class="mx-2">Datenschutz</a>
+            </div>
+            <div class="md:w-1/3 text-right">Designed by Opus 5.5</div>
+        </div>
+    </footer>
+
+    <!-- Modal für Skills -->
+    <div id="skill-modal" class="fixed inset-0 z-[90] hidden items-center justify-center">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-modal></div>
+
+        <!-- Dialog -->
+        <div role="dialog" aria-modal="true" aria-labelledby="skill-title" class="skill-dialog relative mx-4 w-[min(680px,92vw)] rounded-xl text-zinc-100 shadow-2xl">
+            <div class="relative p-6">
+                <div class="flex items-start justify-between gap-6">
+                    <div>
+                        <h3 id="skill-title" class="text-xl font-medium tracking-wide uppercase"></h3>
+                        <p id="skill-sub" class="mt-1 text-sm text-stone-400"></p>
+                    </div>
+                    <button class="rounded-md p-2 text-stone-400 hover:text-white" title="Schließen" data-close-modal>
+                        ✕
+                    </button>
+                </div>
+
+                <div id="skill-list" class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- wird per JS befüllt -->
+                </div>
+
+                <div class="mt-6 flex items-center justify-between gap-4">
+                    <div class="text-xs text-stone-500">
+                        Legende: 1=Grundlagen · 2=Fortgeschritten · 3=Senior · 4=Experte · 5=Lead
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toasts (oberhalb des Docks) -->
+    <div id="toast-root" class="pointer-events-none fixed inset-x-0 bottom-16 z-[9999] flex justify-center"></div>
+
+    <!-- EmailJS SDK -->
+    <!-- Cloudflare Turnstile (Bot-Schutz Kontaktformular), wird von src/contact.js gerendert -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="mapbox.js"></script>
+    <script src="skills.js"></script>
+</body>
+
+</html>

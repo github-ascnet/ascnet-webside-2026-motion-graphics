@@ -1,0 +1,18 @@
+﻿# Abhängigkeiten
+node_modules/
+
+# Lokale Secrets und Wrangler-Cache
+.dev.vars
+.wrangler/
+
+# Build-Ergebnis (entsteht mit npm run build)
+dist/
+
+# Lokale Sicherungen früherer Entwürfe und Arbeitsdateien
+_backup_*/
+.claude/
+claude_*.txt
+seo-prompt.txt
+
+.env
+

@@ -1,0 +1,166 @@
+{
+  "messaging": {
+    "title": "Expertenprofil",
+    "subtitle": "Microsoft Exchange, Hybrid, Security, Betrieb · Teams, Voice, Integration, Governance",
+    "items": [
+      {
+        "name": "Exchange 2016/2019 On-Prem",
+        "level": 5,
+        "notes": "Design, DAG, Tuning, High Availability, Backup & Recovery, Security Hardening, Mailbox & Database Management, Transport Services, PowerShell Automation"
+      },
+      {
+        "name": "Exchange Hybrid / OAuth",
+        "level": 5,
+        "notes": "Modern Auth, Azure AD Integration, EWS/EAS, Free/Busy, Hybrid Configuration Wizard, Mail Flow, Federation Trust, OAuth Scopes, Hybrid Connectivity"
+      },
+      {
+        "name": "Transport & Routing",
+        "level": 5,
+        "notes": "Connectors, Queue-Analyse, TLS/MTLS"
+      },
+      {
+        "name": "Security & Governance",
+        "level": 5,
+        "notes": "Mailflow Rules, DLP, Auditing, Retention, eDiscovery"
+      },
+      {
+        "name": "Teams Administration",
+        "level": 4,
+        "notes": "Policies, User Management, Compliance"
+      },
+      {
+        "name": "Teams Voice & Routing",
+        "level": 3,
+        "notes": "PSTN, SBC, Call Queues, Auto Attendant"
+      },
+      {
+        "name": "Teams Integration & Apps",
+        "level": 3,
+        "notes": "Power Platform, Bots, Third-Party Apps"
+      },
+      {
+        "name": "Teams Security & Governance",
+        "level": 3,
+        "notes": "Conditional Access, DLP, Safe Links"
+      }
+    ]
+  },
+  "iam": {
+    "title": "Expertenprofil",
+    "subtitle": "Active Directory, Entra ID, ADFS, Provisioning, Governance, PAM, MFA, SSO/Federation, Identity Governance",
+    "items": [
+      {
+        "name": "Active Directory",
+        "level": 5,
+        "notes": "OU-Modelle, ACL, Schema-Erweiterung, Trusts, Replikation, Sites & Services, DNS, GPO, Delegation, Backup & Recovery, AD Migration, Forest/Domain Design, Security Hardening, Auditing, Kerberos, LDAP"
+      },
+      {
+        "name": "Entra ID Connect / Sync",
+        "level": 5,
+        "notes": "Filter, Writeback, Staging, Custom Rules, Synchronization, Password Hash Sync, Pass-through Authentication, Group Filtering, Device Writeback, Hybrid Join, Upgrade & Migration, Security & Compliance"
+      },
+      {
+        "name": "ADFS / Claims",
+        "level": 5,
+        "notes": "RPT, Claim Rules, Token-Signing/Encrypt"
+      },
+      {
+        "name": "Provisioning & Lifecycle",
+        "level": 4,
+        "notes": "Automatisierung, Self-Service, Workflows"
+      },
+      {
+        "name": "Privileged Access Management (PAM)",
+        "level": 4,
+        "notes": "Just-in-Time Access, Approval Workflows, Auditing"
+      },
+      {
+        "name": "Identity Governance",
+        "level": 4,
+        "notes": "Access Reviews, Policy Enforcement, Compliance"
+      },
+      {
+        "name": "Multi-Faktor-Authentifizierung (MFA)",
+        "level": 5,
+        "notes": "Conditional Access, Methoden, Rollout"
+      },
+      {
+        "name": "SSO & Federation",
+        "level": 4,
+        "notes": "SAML, OAuth, OpenID Connect, Integration"
+      }
+    ]
+  },
+  "development": {
+    "title": "Expertenprofil",
+    "subtitle": ".NET Core/Framework, Web Development, Automatisierung, Integration",
+    "items": [
+      {
+        "name": ".NET Entwicklung (C#)",
+        "level": 5,
+        "notes": "ASP.NET Core, Entity Framework, LINQ, Dependency Injection, REST APIs, Microservices, Testing, CI/CD"
+      },
+      {
+        "name": "JavaScript",
+        "level": 4,
+        "notes": "ES6+, Asynchrone Programmierung, Node.js, Express, NPM/Yarn, Testing (Jest)"
+      },
+      {
+        "name": "Frontend-Entwicklung",
+        "level": 4,
+        "notes": "HTML5, CSS3, Responsive Design, Flexbox, Grid, SASS/LESS, TailwindCSS, Browser APIs"
+      },
+      {
+        "name": "React & JSX",
+        "level": 4,
+        "notes": "Hooks, Context API, Redux, Komponentenarchitektur, Styled Components, React Router"
+      },
+      {
+        "name": "Next.js & SSR",
+        "level": 4,
+        "notes": "Server-Side Rendering, Static Generation, API Routes, Internationalisierung, Image Optimization, Middleware"
+      },
+      {
+        "name": "PowerShell Automatisierung",
+        "level": 5,
+        "notes": "Advanced Scripting, Modules, Remoting, Error Handling, DSC, Parallelisierung, Security, Reporting"
+      }
+    ]
+  },
+  "bi": {
+    "title": "Expertenprofil",
+    "subtitle": "Business Intelligence, MS-SQL, Data Warehouse, Analytics, Reporting, Integration",
+    "items": [
+      {
+        "name": "MS SQL Server & T-SQL",
+        "level": 4,
+        "notes": "Advanced Query Optimization, Stored Procedures, Triggers, Functions, Performance-Tuning, Security, Always-On, OLTP"
+      },
+      {
+        "name": "Data Warehouse Design",
+        "level": 4,
+        "notes": "Dimensionale Modellierung, Star/Snowflake Schema, Slowly Changing Dimensions, ETL-Konzepte, Data Vault, Big Data"
+      },
+      {
+        "name": "SSIS & ETL-Prozesse",
+        "level": 4,
+        "notes": "Komplexe Pakete, Staging, Inkrementelles Laden, Partitionierung, Parallelisierung, Custom Components"
+      },
+      {
+        "name": "SSAS & Datenmodellierung",
+        "level": 3,
+        "notes": "Tabular & Multidimensional Models, DAX, MDX, KPIs, Hierarchien, Calculated Members, Perspectives, Security"
+      },
+      {
+        "name": "Power BI & Reporting",
+        "level": 2,
+        "notes": "Advanced DAX, Custom Visuals, Report-Design, Power Query (M), Dataflows, Deployment Pipelines, Row-Level Security"
+      },
+      {
+        "name": "Data Analytics & AI",
+        "level": 1,
+        "notes": "Machine Learning Models, Predictive Analytics, Azure ML, Cognitive Services, Text Analytics"
+      }
+    ]
+  }
+}

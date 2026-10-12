@@ -1,0 +1,14 @@
+# Lokale Secrets für "npm run dev:api" (wrangler pages dev).
+# Kopieren nach .dev.vars und Werte eintragen. .dev.vars NIE ins Git einchecken.
+# Live stehen dieselben Namen als Secrets im Cloudflare-Pages-Projekt,
+# siehe docs/cloudflare-pages-kontaktformular.md
+
+# EmailJS: Account → General (Public Key) / Account → Security (Private Key)
+EMAILJS_PUBLIC_KEY=
+EMAILJS_PRIVATE_KEY=
+# EmailJS: Email Services / Email Templates
+EMAILJS_SERVICE_ID=service_z6esdss
+EMAILJS_TEMPLATE_ID=template_9wp4pj5
+
+# Turnstile-Test-Secret von Cloudflare: lässt jede Prüfung bestehen (nur lokal!)
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
