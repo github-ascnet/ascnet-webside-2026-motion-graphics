@@ -1,0 +1,7 @@
+# ascnet.ch – alle Inhaltsseiten sind für Suchmaschinen freigegeben.
+# /api/ ist der technische Endpunkt des Kontaktformulars (nur POST, kein Inhalt).
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://ascnet.ch/sitemap.xml

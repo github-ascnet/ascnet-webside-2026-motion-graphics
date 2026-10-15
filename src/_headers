@@ -1,0 +1,10 @@
+# Cloudflare Pages: Response-Header (https://developers.cloudflare.com/pages/configuration/headers/)
+
+# Die Produktionsadresse <projekt>.pages.dev ist ein Duplikat von
+# https://ascnet.ch und soll nicht in den Suchindex. (Vorschau-Deployments
+# erhalten noindex laut Cloudflare automatisch.)
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8

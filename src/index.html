@@ -1,42 +1,122 @@
 <!doctype html>
-<html lang="de">
+<html lang="de-CH">
 
 <head>
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ASCNET Solutions GmbH",
-    "description": "IT-Experten für Exchange, Teams, IAM, Entwicklung, Business Intelligence.",
-    "url": "https://ascnet.ch",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "c/o Sarya AG, Chamerstrasse 174",
-        "postalCode": "6300",
-        "addressLocality": "Zug",
-        "addressCountry": "CH"
-    },
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "email": "info@ascnet.ch"
-    },
-    "makesOffer": [
-        { "@type": "Service", "name": "Messaging & Kollaboration" },
-        { "@type": "Service", "name": "Identitätsmanagement (IAM)" },
-        { "@type": "Service", "name": "Softwareentwicklung (.NET, JavaScript, React, Next.js, PowerShell)" },
-        { "@type": "Service", "name": "Business Intelligence (MS SQL, DWH, Power BI)" }
-    ]
-    }
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ASCNET Solutions GmbH – Experten für Microsoft Exchange, Teams, Identity & Access Management, .NET Entwicklung, Business Intelligence und Data Warehouse. Ihr Partner für Digitalisierung, Integration und Automatisierung.">
+    <title>IT-Beratung Zug: Exchange, Teams, Entra ID &amp; BI | ASCNET</title>
+    <meta name="description" content="Microsoft Exchange und Teams, Active Directory und Entra ID, .NET- und PowerShell-Entwicklung, Business Intelligence mit SQL Server und Power BI – ASCNET, Zug.">
     <meta name="keywords" content="Microsoft Exchange, Teams, IAM, Active Directory, Entra ID, ADFS, .NET, C#, JavaScript, React, Next.js, PowerShell, Business Intelligence, MS SQL, Data Warehouse, SSIS, SSAS, Power BI, Digitalisierung, Automatisierung, Integration, Expertenprofil">
     <meta name="author" content="ASCNET Solutions GmbH">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ascnet.ch/">
     <meta name="theme-color" content="#222222">
-    <title>ASCNET Solutions GmbH</title>
+
+    <!-- Favicon (aus dem Logo abgeleitet) -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:site_name" content="ASCNET Solutions GmbH">
+    <meta property="og:title" content="IT-Beratung Zug: Exchange, Teams, Entra ID &amp; BI | ASCNET">
+    <meta property="og:description" content="Collaboration, Identity &amp; Access Management, .NET- und PowerShell-Entwicklung sowie Business Intelligence – mit mehr als 20 Jahren Erfahrung aus Zug.">
+    <meta property="og:url" content="https://ascnet.ch/">
+    <meta property="og:image" content="https://ascnet.ch/img/Logo_smart_dark_xl.png">
+    <meta property="og:image:width" content="1644">
+    <meta property="og:image:height" content="654">
+    <meta property="og:image:alt" content="ASCNET – Digital Solutions for Smart People">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IT-Beratung Zug: Exchange, Teams, Entra ID &amp; BI | ASCNET">
+    <meta name="twitter:description" content="Collaboration, Identity &amp; Access Management, .NET- und PowerShell-Entwicklung sowie Business Intelligence – mit mehr als 20 Jahren Erfahrung aus Zug.">
+    <meta name="twitter:image" content="https://ascnet.ch/img/Logo_smart_dark_xl.png">
+
+    <!-- Strukturierte Daten (schema.org): Organisation, Website und die vier Leistungen.
+         Firmendaten aus dem UID-Register (CHE-180.731.045). -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ascnet.ch/#organization",
+          "name": "ASCNET Solutions GmbH",
+          "legalName": "ASCNET Solutions GmbH",
+          "url": "https://ascnet.ch/",
+          "logo": "https://ascnet.ch/img/Logo_smart_xl.png",
+          "image": "https://ascnet.ch/img/Logo_smart_dark_xl.png",
+          "email": "info@ascnet.ch",
+          "description": "IT-Beratung und Engineering aus Zug für Collaboration (Microsoft Exchange, Teams), Identity & Access Management (Active Directory, Entra ID), Softwareentwicklung (.NET, PowerShell) und Business Intelligence (SQL Server, Power BI).",
+          "vatID": "CHE-180.731.045 MWST",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "UID",
+            "value": "CHE-180.731.045"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "c/o Sarya AG, Chamerstrasse 174",
+            "postalCode": "6300",
+            "addressLocality": "Zug",
+            "addressRegion": "ZG",
+            "addressCountry": "CH"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "info@ascnet.ch",
+            "availableLanguage": "de"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ascnet.ch/#website",
+          "name": "ASCNET Solutions GmbH",
+          "url": "https://ascnet.ch/",
+          "inLanguage": "de-CH",
+          "publisher": { "@id": "https://ascnet.ch/#organization" }
+        },
+        {
+          "@type": "Service",
+          "name": "Collaboration-Management",
+          "serviceType": "Microsoft Exchange und Microsoft Teams",
+          "description": "Beratung, Integration und Betrieb moderner Kommunikationslösungen mit Microsoft Exchange (On-Prem und Hybrid) und Microsoft Teams.",
+          "provider": { "@id": "https://ascnet.ch/#organization" },
+          "areaServed": "CH",
+          "url": "https://ascnet.ch/#leistungen"
+        },
+        {
+          "@type": "Service",
+          "name": "Identity-Management",
+          "serviceType": "Identity & Access Management",
+          "description": "Zentrale Verwaltung von Identitäten und Zugängen mit Active Directory, Entra ID, ADFS, MFA und SSO.",
+          "provider": { "@id": "https://ascnet.ch/#organization" },
+          "areaServed": "CH",
+          "url": "https://ascnet.ch/#leistungen"
+        },
+        {
+          "@type": "Service",
+          "name": "Development",
+          "serviceType": "Softwareentwicklung und Automatisierung",
+          "description": "Individuelle Web-Applikationen sowie BI-, IAM- und Kommunikationslösungen mit .NET (C#), JavaScript und React sowie PowerShell-Automatisierung – inklusive Workshops und Schulungen.",
+          "provider": { "@id": "https://ascnet.ch/#organization" },
+          "areaServed": "CH",
+          "url": "https://ascnet.ch/#leistungen"
+        },
+        {
+          "@type": "Service",
+          "name": "Business Intelligence",
+          "serviceType": "Business Intelligence und Data Warehouse",
+          "description": "Massgeschneiderte BI-Lösungen mit MS SQL Server, Data Warehouse, SSIS/SSAS und Power BI.",
+          "provider": { "@id": "https://ascnet.ch/#organization" },
+          "areaServed": "CH",
+          "url": "https://ascnet.ch/#leistungen"
+        }
+      ]
+    }
+    </script>
 
     <!-- Intro vor dem ersten Paint entscheiden: einmal pro Session, nie bei
          reduzierter Bewegung. Das kritische Intro-CSS steht inline, weil
@@ -207,7 +287,7 @@
                 <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
                     <div>
                         <h2 class="h2" data-reveal>Ihr Nutzen ist <br class="hidden md:inline">unser <em>massstab</em></h2>
-                        <p class="lead" data-reveal style="--reveal-delay:0.15s">Mit mehr als 20 Jahren Erfahrung bringen wir Orientierung, Klarheit und Entscheidungsstärke in jedes Projekt. Wir denken nicht in Silos, sondern handeln agil und partnerschaftlich. Unser Ziel: den größtmöglichen Mehrwert für Sie und Ihr Unternehmen zu schaffen.</p>
+                        <p class="lead" data-reveal style="--reveal-delay:0.15s">Mit mehr als 20 Jahren Erfahrung bringen wir Orientierung, Klarheit und Entscheidungsstärke in jedes Projekt. Wir denken nicht in Silos, sondern handeln agil und partnerschaftlich. Unser Ziel: den grösstmöglichen Mehrwert für Sie und Ihr Unternehmen zu schaffen.</p>
                     </div>
                     <div class="frame value-box" data-reveal style="--reveal-delay:0.2s">
                         <div class="value-stat"><b>20+</b><span>[ Jahre Erfahrung ]</span></div>
@@ -234,25 +314,25 @@
                     <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0s">
                         <div class="service-top"><span>[ 001/004 ]</span><i aria-hidden="true">↗</i></div>
                         <h3>Collaboration-Management</h3>
-                        <p>Wir kombinieren Beratung, Integration und Betrieb, um Unternehmen jeder Größe moderne Kommunikationslösungen bereitzustellen – sicher, flexibel und zukunftsfähig.</p>
+                        <p>Wir kombinieren Beratung, Integration und Betrieb, um Unternehmen jeder Grösse moderne Kommunikationslösungen mit Microsoft Exchange (On-Prem und Hybrid) und Microsoft Teams bereitzustellen – sicher, flexibel und zukunftsfähig.</p>
                         <button class="skill-btn link-line" data-area="messaging">( Details )</button>
                     </article>
                     <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.08s">
                         <div class="service-top"><span>[ 002/004 ]</span><i aria-hidden="true">↗</i></div>
                         <h3>Identity-Management</h3>
-                        <p>Wir unterstützen Unternehmen dabei, Identitäten zentral zu verwalten und Zugänge zuverlässig zu steuern – mit leistungsfähigen IAM-Lösungen, die mit Ihren Anforderungen wachsen.</p>
+                        <p>Wir unterstützen Unternehmen dabei, Identitäten zentral zu verwalten und Zugänge zuverlässig zu steuern – mit Active Directory, Entra ID, ADFS, MFA und SSO sowie leistungsfähigen IAM-Lösungen, die mit Ihren Anforderungen wachsen.</p>
                         <button class="skill-btn link-line" data-area="iam">( Details )</button>
                     </article>
                     <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.16s">
                         <div class="service-top"><span>[ 003/004 ]</span><i aria-hidden="true">↗</i></div>
                         <h3>Development</h3>
-                        <p>Wir realisieren BI-, IAM- und Kommunikationslösungen sowie individuelle Web-Applikationen – von der Konzeption über Beratung und Umsetzung bis hin zu Workshops und Schulungen.</p>
+                        <p>Wir realisieren BI-, IAM- und Kommunikationslösungen sowie individuelle Web-Applikationen mit .NET (C#), JavaScript und React sowie PowerShell-Automatisierung – von der Konzeption über Beratung und Umsetzung bis hin zu Workshops und Schulungen.</p>
                         <button class="skill-btn link-line" data-area="development">( Details )</button>
                     </article>
                     <article class="frame service-card tilt-card" data-reveal style="--reveal-delay:0.24s">
                         <div class="service-top"><span>[ 004/004 ]</span><i aria-hidden="true">↗</i></div>
                         <h3>Business Intelligence</h3>
-                        <p>Wir beraten, integrieren und entwickeln maßgeschneiderte BI-Lösungen, die Daten in Erkenntnisse verwandeln und Software in messbaren Nutzen überführen – effizient und flexibel.</p>
+                        <p>Wir beraten, integrieren und entwickeln massgeschneiderte BI-Lösungen mit MS SQL Server, Data Warehouse, SSIS/SSAS und Power BI, die Daten in Erkenntnisse verwandeln und Software in messbaren Nutzen überführen – effizient und flexibel.</p>
                         <button class="skill-btn link-line" data-area="bi">( Details )</button>
                     </article>
                 </div>
@@ -378,9 +458,9 @@
         <div class="container-x flex flex-col md:flex-row items-center justify-between gap-2">
             <div class="md:w-1/3 text-left">©2026 ASCNET Solutions GmbH</div>
             <div class="md:w-1/3 text-center">
-                <a href="impressum.html" class="mx-2">Impressum</a>
+                <a href="/impressum" class="mx-2">Impressum</a>
                 <span class="mx-1" aria-hidden="true">//</span>
-                <a href="datenschutz.html" class="mx-2">Datenschutz</a>
+                <a href="/datenschutz" class="mx-2">Datenschutz</a>
             </div>
             <div class="md:w-1/3 text-right">Designed by Opus 5.5</div>
         </div>
@@ -399,7 +479,7 @@
                         <h3 id="skill-title" class="text-xl font-medium tracking-wide uppercase"></h3>
                         <p id="skill-sub" class="mt-1 text-sm text-stone-400"></p>
                     </div>
-                    <button class="rounded-md p-2 text-stone-400 hover:text-white" title="Schließen" data-close-modal>
+                    <button class="rounded-md p-2 text-stone-400 hover:text-white" title="Schliessen" data-close-modal>
                         ✕
                     </button>
                 </div>

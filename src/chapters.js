@@ -58,7 +58,7 @@ function setMenuOpen(open) {
   mobileMenu.classList.toggle("is-open", open);
   mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
   menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-  menuBtn.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+  menuBtn.setAttribute("aria-label", open ? "Menü schliessen" : "Menü öffnen");
 }
 
 function isMenuOpen() {

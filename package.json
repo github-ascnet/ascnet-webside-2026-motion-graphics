@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "webpack serve --mode development --open",
     "dev-bg": "start webpack serve --mode development --open",
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
     "dev:api": "wrangler pages dev dist --port 8788",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,9 +3,19 @@ const path = require("path");
 const { Compilation, sources } = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-// Statische Dateien, die die Seite per <script> bzw. fetch() lädt; sie werden
-// unverändert aus src/ nach dist/ übernommen (Ordner rekursiv).
-const STATIC_FILES = ["mapbox.js", "skills.js", "skills.json", "img"];
+// Statische Dateien, die die Seite per <script> bzw. fetch() lädt, sowie
+// SEO- und Hosting-Dateien (robots.txt, sitemap.xml, Cloudflare-Pages-_headers,
+// Favicon); sie werden unverändert aus src/ nach dist/ übernommen (Ordner rekursiv).
+const STATIC_FILES = [
+  "mapbox.js",
+  "skills.js",
+  "skills.json",
+  "img",
+  "robots.txt",
+  "sitemap.xml",
+  "_headers",
+  "favicon.ico",
+];
 
 // Kopiert STATIC_FILES in die Build-Ausgabe; im Dev-Server mit Live-Reload
 class CopyStaticPlugin {
@@ -58,8 +68,9 @@ if (turnstileSiteKey === TURNSTILE_TEST_KEY) {
   console.warn("[build] TURNSTILE_SITE_KEY nicht gesetzt – Turnstile-Test-Key wird verwendet (nur für lokale Tests).");
 }
 
-// Rechtsseiten: eigener, schlanker Einstieg ohne Animation
-const legalPages = ["impressum", "datenschutz"].map(
+// Rechtsseiten und Fehlerseite: eigener, schlanker Einstieg ohne Animation.
+// 404.html liefert Cloudflare Pages für unbekannte Pfade mit Status 404 aus.
+const legalPages = ["impressum", "datenschutz", "404"].map(
   (name) =>
     new HtmlWebpackPlugin({
       template: `./src/${name}.html`,
@@ -76,6 +87,8 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
+    // absolute Skriptpfade, damit auch die 404-Seite unter /a/b/c ihre Dateien findet
+    publicPath: "/",
     // dist/ bei jedem Build komplett neu aufbauen: nur, was src/ erzeugt
     clean: true,
   },
@@ -86,6 +99,15 @@ module.exports = {
     liveReload: true,
     // Kontaktformular: /api an die lokale Pages Function (npm run dev:api) weiterreichen
     proxy: [{ context: ["/api"], target: "http://127.0.0.1:8788" }],
+    // Clean URLs wie bei Cloudflare Pages (/impressum statt /impressum.html)
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/impressum\/?$/, to: "/impressum.html" },
+        { from: /^\/datenschutz\/?$/, to: "/datenschutz.html" },
+        // alle übrigen unbekannten Seiten (nicht "/") wie live auf die Fehlerseite
+        { from: /^\/.+/, to: "/404.html" },
+      ],
+    },
   },
   module: {
     rules: [
@@ -105,5 +127,5 @@ module.exports = {
     ...legalPages,
     new CopyStaticPlugin(),
   ],
-  mode: "development",
+  // Modus kommt aus den npm-Skripten: build = production, dev = development
 };
