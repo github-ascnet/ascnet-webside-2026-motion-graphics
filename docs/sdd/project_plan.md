@@ -56,7 +56,7 @@ Jede Anforderung nennt Herkunft, die massgebende Entscheidung (DEC), das Arbeits
 | REQ-002 | Typografie: **Saira** (Versalien, kursive Akzentwörter in Gold) für Überschriften und Text, **JetBrains Mono** für Labels, Zähler, Klammer-Schreibweise `[ 03 ] ( … )`. | `[Auftrag]` `[Code]` `src/fonts.css` | DEC-005, DEC-017 | BP-005, BP-012 | Beide Schriften laden lokal (0 Anfragen an Google) |
 | REQ-003 | Logo oben links: Original-Logo in einer **Dunkel-Variante** (heller Schriftzug, goldene Punkte). Beim Scrollen verkleinert es sich von 84 px auf 50 px Höhe. | `[Auftrag]` `[Code]` `src/img/Logo_smart_dark.png`, `src/main.css` `.brand-logo` | DEC-006 | BP-005 | Logo lesbar auf `#222222`, auf Desktop und Handy geprüft |
 | REQ-004 | Abstände zwischen den Kapiteln eng gehalten (Abstand Inhalt → nächste Kapitelkopfzeile ca. 90 px Desktop, 84 px Handy). | `[Auftrag]` `[Messung]` | – | BP-005 | `.section { padding: clamp(2rem, 5vh, 4rem) 0 }` |
-| REQ-005 | Footer: „©2026 ASCNET Solutions GmbH“, Links „Impressum // Datenschutz“, Vermerk „Designed by Opus 5.5“. | `[Auftrag]` `[Code]` `src/index.html` | DEC-005 | BP-005 | Text im Footer; siehe offener Punkt OP-007 (Jahr auf Rechtsseiten) |
+| REQ-005 | Footer: „©2026 ASCNET Solutions GmbH“, Links „Impressum // Datenschutz“, Vermerk „Designed by Opus 5.5“. | `[Auftrag]` `[Code]` `src/index.html` | DEC-005 | BP-005 | Text im Footer; gilt auch für Impressum und Datenschutz (OP-007 erledigt) |
 
 ### 3.2 Hintergrund, Intro, Navigation
 
@@ -153,15 +153,15 @@ Alle Dateien aus `git ls-files` (Stand `0e6c95f`):
 | `src/plz.json` | Onsite-Zuschlag je PLZ-Prefix (in `main.js` importiert) |
 | `src/main.css` | Alle Styles (Tailwind 4 + Layer `components`), Design-Variablen |
 | `src/fonts.css`, `src/fonts/*` | lokale Schriften und Lizenzen |
-| `src/img/*` | Logo (Original, Dunkel, Dunkel-xl), Favicons, SVG-Logo (unbenutzt) |
+| `src/img/*` | Logo (Original, Dunkel, Dunkel-xl), Favicons |
 | `src/favicon.ico`, `src/robots.txt`, `src/sitemap.xml`, `src/_headers` | SEO- und Hosting-Dateien (statisch) |
 | `webpack.config.js` | Build: zwei Einstiege (`main`, `legal`), HTML-Seiten, statische Dateien (`STATIC_FILES`), Build-Variablen, Dev-Server (Proxy `/api`, Clean URLs), `.env`-Leser |
 | `package.json`, `package-lock.json` | Skripte, Abhängigkeiten (Webpack 5, Tailwind 4, PostCSS, Wrangler 4.142.0) |
-| `tailwind.config.js`, `postcss.config.js` | Tailwind-/PostCSS-Konfiguration |
-| `wrangler.jsonc` | Workers-Syntax, wird von Pages ignoriert (siehe OP-002) |
+| `postcss.config.js` | PostCSS-Konfiguration für Tailwind 4 |
+| `scripts/test-http.mjs`, `scripts/test-browser.mjs`, `scripts/lighthouse.mjs` | Prüfskripte (DEC-024) |
 | `.env.example`, `.dev.vars.example`, `.gitignore` | Vorlagen für lokale Werte, Ausschlüsse |
 | `docs/*.md`, `README.md` | Betriebs- und SEO-Doku |
-| `.github/copilot-instructions.md` | Überbleibsel (siehe OP-003) |
+| `docs/logo/ascnet_xxl_2025.svg` | Logo-Original als SVG, nicht im Build (siehe OP-004) |
 
 ### 4.3 Datenflüsse
 
@@ -226,16 +226,16 @@ Diese Punkte wurden beim INIT festgestellt und **nicht** stillschweigend korrigi
 
 | ID | Befund | Art | Beleg |
 |---|---|---|---|
-| OP-001 | `README.md` beginnt mit einer veralteten allgemeinen Einleitung („einfaches Beispiel“); `package.json` heisst noch `ascnet-webside-2025`, Beschreibung leer. | dokumentarisch | `[Code]` |
-| OP-002 | `wrangler.jsonc` nutzt Workers-Syntax (`assets`), Pages ignoriert die Datei und warnt im Build-Log. Entscheid offen: entfernen oder in Pages-Format überführen. Hinweis: Mit `pages_build_output_dir` würde die Datei die Dashboard-Einstellungen übernehmen und sperren. | offene Entscheidung | `[Code]` `[Doku]` Build-Log |
-| OP-003 | `.github/copilot-instructions.md` enthält eine veraltete Checkliste („Kompilieren und testen“). | dokumentarisch | `[Code]` |
-| OP-004 | `src/img/ascnet_xxl_2025.svg` wird mitgebaut, aber nicht verwendet (Schrift „Nulshock“ nicht eingebettet). `tailwind.config.js` nennt noch die Schriften Jura und Space Mono (frühere Stände); Tailwind 4 liest die Datei nicht. | technisch/dokumentarisch | `[Code]` |
+| OP-001 | ~~`README.md` veraltet, `package.json` mit altem Namen~~ **erledigt** (CHG-001): README neu, Name `ascnet-webside-2026-motion-graphics`, Beschreibung gesetzt. | erledigt | `[Code]` |
+| OP-002 | ~~`wrangler.jsonc` in Workers-Syntax~~ **erledigt** (CHG-001, DEC-023): Datei entfernt. | erledigt | `[Code]` `[Doku]` |
+| OP-003 | ~~`.github/copilot-instructions.md` veraltet~~ **erledigt** (CHG-001): Datei entfernt. | erledigt | `[Code]` |
+| OP-004 | ~~Ungenutztes SVG im Build, veraltete `tailwind.config.js`~~ **erledigt** (CHG-001): SVG nach `docs/logo/` verschoben (nicht mehr im Build), `tailwind.config.js` entfernt. | erledigt | `[Code]` |
 | OP-005 | Altes Pages-Projekt `ascnet-web-2025` besteht noch; Löschung nach stabilem Betrieb vorgesehen, nicht bestätigt. | offene Aufgabe | `[Auftrag]` |
 | OP-006 | Ausserhalb des Repos nicht bestätigt: EmailJS „Use Private Key“ aktiv; EmailJS-Vorlage nutzt `{{name}}` statt `{{fullName}}`; Mapbox-Token auf ascnet.ch beschränkt; Turnstile-Hostnames (`ascnet.ch`, `www.ascnet.ch`) eingetragen; Rate-Limiting-Regel für `/api/contact` (optional). | fehlende Information | `[Doku]` |
-| OP-007 | Copyright-Jahr uneinheitlich: Startseite und 404 „©2026“, Impressum und Datenschutz „©2025“. | dokumentarisch | `[Code]` |
+| OP-007 | ~~Copyright-Jahr uneinheitlich~~ **erledigt** (CHG-001): alle Seiten „©2026“. | erledigt | `[Code]` |
 | OP-008 | Bezeichner stammen aus früheren Entwurfsständen: in `chapters.js` Parametername `waveCtrl`, Kommentar „Welle“; Fasern-API `scatter`/`form` (aus der Wellen-Phase). Funktional unkritisch. | dokumentarisch | `[Code]` |
-| OP-009 | Es gibt **keine automatisierten Tests**; Prüfungen (Lighthouse, Browser-Skripte, curl) wurden manuell ausgeführt, die Skripte sind nicht im Repository. `npm test` ist ein Platzhalter. | fehlende Information | `[Code]` |
+| OP-009 | ~~Keine automatisierten Tests~~ **erledigt** (CHG-001, DEC-024): `scripts/` mit `npm test`, `npm run test:browser`, `npm run lighthouse`. Die Tests prüfen nur den Ist-Stand. | erledigt | `[Code]` |
 | OP-010 | Web Analytics und Search Console sind laut Projektleitung eingerichtet; der Beacon ist live nachgewiesen, die Indexierung der drei Seiten wurde nicht geprüft. | fehlende Information | `[Messung]` |
-| OP-011 | `sitemap.xml`: `lastmod` ist von Hand gepflegt (Start/Datenschutz 2026-10-15, Impressum 2026-10-12). | Pflegeaufwand | `[Code]` |
+| OP-011 | `sitemap.xml`: `lastmod` ist von Hand gepflegt (alle drei Seiten 2026-10-15). | Pflegeaufwand | `[Code]` |
 | OP-012 | Lokale Sicherungen früherer Entwurfsstände (`_backup_*`) liegen ausserhalb des Gits und sind absichtlich nicht dokumentiert. | Hinweis | `[Auftrag]` |
 | OP-013 | `seo-prompt.txt` (Auftrag der SEO-Phase) liegt nur lokal und ist nicht im Git. | Hinweis | `[Code]` `.gitignore` |

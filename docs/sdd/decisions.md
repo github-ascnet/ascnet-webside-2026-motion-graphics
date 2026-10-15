@@ -34,8 +34,8 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 | DEC-020 | Search Console als Domain-Property | gültig | REQ-054 |
 | DEC-021 | Firmenangaben: Quelle und Einheitlichkeit | gültig | REQ-025/040 |
 | DEC-022 | Build erzeugt `dist/` vollständig | gültig | REQ-060 |
-| DEC-023 | `wrangler.jsonc`: Umgang offen | **offen** | OP-002 |
-| DEC-024 | Messskripte ins Repository aufnehmen? | **offen** | OP-009 |
+| DEC-023 | `wrangler.jsonc` entfernt | gültig | REQ-060 |
+| DEC-024 | Prüfskripte im Repository | gültig | REQ-063 |
 
 ---
 
@@ -119,7 +119,7 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 - **Status:** gültig · **Datum:** 15.10.2026
 - **Entscheid:** Cloudflare Pages, angebunden an das GitHub-Repository, Build `npm run build`, Ausgabe `dist`. Kein Drag-and-drop-Upload (unterstützt keine Functions). Die Domain `ascnet.ch` hängt am Projekt `ascnet-webside-2026-motion-graphics`.
 - **Begründung:** Functions und automatische Deployments. `[Doku]` `docs/cloudflare-pages-kontaktformular.md`
-- **Konsequenzen:** Jeder Push auf `main` ist ein Production-Deployment; Pushes nur nach Freigabe (agents.md). `wrangler.jsonc` wird ignoriert (siehe DEC-023).
+- **Konsequenzen:** Jeder Push auf `main` ist ein Production-Deployment; Pushes nur nach Freigabe (agents.md). Eine `wrangler.jsonc` gibt es nicht mehr (DEC-023).
 
 ## DEC-013 Öffentliche Schlüssel als Build-Variablen
 - **Status:** gültig · **Datum:** 15.10.2026
@@ -188,13 +188,14 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 - **Begründung:** Ein Build durch Cloudflare muss dieselbe Seite liefern wie lokal; getestet mit einer frischen Kopie ohne `dist` und `node_modules`. `[Messung]`
 - **Konsequenzen:** Neue statische Datei → in `src/` ablegen und in `STATIC_FILES` eintragen.
 
-## DEC-023 `wrangler.jsonc`: Umgang offen
-- **Status:** **offen**
-- **Sachverhalt:** Die Datei nutzt die Workers-Syntax und wird von Pages mit Warnung übersprungen. Ein Eintrag `pages_build_output_dir` würde sie zur massgebenden Konfiguration machen und die Dashboard-Felder sperren. `[Doku]` Build-Log
-- **Optionen (nicht entschieden):** entfernen; in Pages-Format überführen; unverändert lassen.
-- **Konsequenzen bis zur Entscheidung:** Warnung im Build-Log bleibt, Dashboard-Einstellungen gelten.
+## DEC-023 `wrangler.jsonc` entfernt
+- **Status:** gültig · **Datum:** 15.10.2026 · **Herkunft:** `[Auftrag]` (Auftrag „Punkte 1–4 fixen“, CHG-001)
+- **Sachverhalt:** Die Datei nutzte die Workers-Syntax und wurde von Pages mit Warnung übersprungen. Ein Eintrag `pages_build_output_dir` hätte sie zur massgebenden Konfiguration gemacht und die Dashboard-Felder gesperrt. `[Doku]` Build-Log
+- **Entscheid:** Die Datei wird gelöscht. Die Einstellungen (Build-Befehl, Ausgabe, Variablen, Secrets) werden ausschliesslich im Pages-Dashboard gepflegt. Lokal genügt `wrangler pages dev dist` ohne Konfigurationsdatei.
+- **Konsequenzen:** Die Build-Log-Warnung entfällt. Bundle und HTML sind unverändert (Hash-Vergleich vor/nach `[Messung]`). Wer die Konfiguration künftig im Repo führen will, braucht eine neue Decision.
 
-## DEC-024 Messskripte ins Repository aufnehmen?
-- **Status:** **offen**
-- **Sachverhalt:** Lighthouse-, Browser- und Statuscode-Prüfungen wurden mit temporären Skripten ausgeführt, die nicht im Repository liegen. Es gibt keine automatisierten Tests.
-- **Optionen (nicht entschieden):** Skripte ins Repository (z. B. `scripts/`) aufnehmen; bei Handprüfung bleiben und die Prüfroutine in `agents.md` nutzen.
+## DEC-024 Prüfskripte im Repository
+- **Status:** gültig · **Datum:** 15.10.2026 · **Herkunft:** `[Auftrag]` (CHG-001)
+- **Entscheid:** Die Prüfroutine aus `agents.md` §6 liegt als Skripte unter `scripts/`: `test-http.mjs` (`npm test`, nur Node-Bordmittel), `test-browser.mjs` (`npm run test:browser`) und `lighthouse.mjs` (`npm run lighthouse`).
+- **Begründung:** Prüfungen sind reproduzierbar, ohne dass sie jedes Mal neu geschrieben werden.
+- **Konsequenzen:** `puppeteer-core` und Lighthouse stehen bewusst **nicht** in `package.json` (Cloudflare installiert alle Abhängigkeiten; Installation per `npm install --no-save puppeteer-core@23.11.1`, Lighthouse per `npx` in fester Version). Die Tests prüfen den Ist-Stand (REQ-063-Werte, Referenzfall), sie legen keine neuen Anforderungen fest. Function-Tests werden ohne `.dev.vars` übersprungen.

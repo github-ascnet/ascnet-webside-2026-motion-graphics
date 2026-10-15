@@ -1,5 +1,5 @@
 {
-  "name": "ascnet-webside-2025",
+  "name": "ascnet-webside-2026-motion-graphics",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,14 @@
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "dev:api": "wrangler pages dev dist --port 8788",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test scripts/test-http.mjs",
+    "test:browser": "node --test scripts/test-browser.mjs",
+    "lighthouse": "node scripts/lighthouse.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Website der ASCNET Solutions GmbH (ascnet.ch)",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.12",
     "css-loader": "^7.1.2",

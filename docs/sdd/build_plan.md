@@ -3,7 +3,7 @@
 SDD-Modus **INIT**, Stand 15.10.2026. Die Arbeitspakete (BP) zeigen, **in welcher Reihenfolge** der heutige Stand entstanden ist. Sie wurden aus Code, Git, Dokumentation und dem Projektverlauf rekonstruiert, nicht vorab geplant.
 
 **Lesehilfe**
-- Status aller BP-001 bis BP-013: `abgeschlossen` (Ausnahmen genannt). BP-014 (diese Dokumentation) ist `in Arbeit`.
+- Status aller BP-001 bis BP-015: `abgeschlossen` (Ausnahmen genannt).
 - **Git-Zuordnung:** Das erste Commit `d5e6acc` (12.10.2026) bündelt die Arbeit von BP-001 bis BP-009. Eine feinere Zuordnung einzelner Pakete zu Commits ist **nicht belegbar** und wird nicht erfunden. Ab BP-010 ist die Zuordnung eindeutig.
 - **Nachweis** nennt Datei, Commit oder Messung. Herkunftsmarken wie in `project_plan.md`.
 - Zeitangaben vor dem 12.10. sind `[offen]`: Es gibt keine Commits davor. Die Entwicklung der Entwürfe fand im Projektverlauf zwischen dem 11. und 12.10.2026 statt. `[Auftrag]`
@@ -14,7 +14,7 @@ Abhängigkeiten in einem Blick:
 ```
 BP-001 ─┬─ BP-002 ── BP-003 ── BP-004 ── BP-005 ─┬─ BP-006 ── BP-007
         │                                         └─ BP-008 ── BP-009 ── BP-010 ── BP-011 ── BP-012 ── BP-013
-        └──────────────────────────────────────────────────────────────────────────────────────────── BP-014
+        └──────────────────────────────────────────────────────────────────────────────────────────── BP-014 ── BP-015
 ```
 
 ---
@@ -146,8 +146,18 @@ BP-001 ─┬─ BP-002 ── BP-003 ── BP-004 ── BP-005 ─┬─ BP-0
 - **Voraussetzungen:** BP-001 bis BP-013.
 - **Dateien:** `docs/sdd/project_plan.md`, `build_plan.md`, `decisions.md`, `agents.md`, `templates/change.md`, `README.md` (Verweis).
 - **Abschlusskriterien:** SDD-CHECK ohne Widerspruch zwischen Dokumentation und Code; alle Dateien aus `git ls-files` in der Komponentenkarte; alle IDs verweisen auf existierende Einträge.
-- **Status:** in Arbeit (nach SDD-CHECK abgeschlossen).
+- **Status:** abgeschlossen (SDD-CHECK am 15.10.2026; Nachweis `[Git]` `a0c2cf4`).
 - **REQ/DEC:** alle
+
+## BP-015 Aufräumen und Prüfskripte (CHG-001)
+- **Ziel:** Die offenen Punkte OP-001, 002, 003, 004, 007 und 009 beheben.
+- **Scope:** Copyright-Jahr und `lastmod`; `wrangler.jsonc`, `tailwind.config.js`, `.github/copilot-instructions.md` entfernen; SVG nach `docs/logo/`; Name in `package.json`; README neu; Prüfskripte unter `scripts/`. Nicht im Scope: Produktivcode, Design, Abhängigkeiten.
+- **Voraussetzungen:** BP-014.
+- **Dateien:** `src/impressum.html`, `src/datenschutz.html`, `src/sitemap.xml`, `package.json`, `package-lock.json` (nur Name), `README.md`, `docs/cloudflare-pages-kontaktformular.md`, `scripts/*`, `docs/sdd/*`.
+- **Abschlusskriterien:** `main.js`, `legal.js`, `index.html` und `404.html` im Build unverändert (Hash-Vergleich); `npm ci --dry-run` ok; `npm test` und `npm run test:browser` bestanden; Lighthouse-SEO 100.
+- **Nachweis:** `[Messung]` Hash-Vergleich identisch; `npm test` 10 bestanden, 3 übersprungen (Secrets, pages.dev); `npm run test:browser` 5 von 5; Lighthouse SEO 100 auf allen Seiten, Performance 92 / 99 / 99.
+- **REQ/DEC:** REQ-005, 063, 064 · DEC-023, DEC-024 · Spezifikation: `changes/CHG-001-aufraeumen-und-pruefskripte.md`
+- **Status:** abgeschlossen
 
 ---
 

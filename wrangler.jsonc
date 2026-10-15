@@ -1,7 +1,0 @@
-{
-  "name": "ascnet-web-2025",
-  "compatibility_date": "2025-08-25",
-  "assets": {
-    "directory": "./dist"
-  }
-}

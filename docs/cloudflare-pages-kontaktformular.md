@@ -131,7 +131,7 @@ npx wrangler pages secret put TURNSTILE_SECRET_KEY --project-name <projektname>
 
 Jeder Befehl fragt den Wert ab, er erscheint nicht im Verlauf. `TURNSTILE_SITE_KEY` und `MAPBOX_TOKEN` setzt man hier als Umgebungsvariablen beim **lokalen** Build.
 
-> **Hinweis zur `wrangler.jsonc`:** Die Datei enthält bewusst **kein** `pages_build_output_dir`. Damit bleibt das Dashboard massgebend für die Einstellungen. Wird dieser Eintrag ergänzt, übernimmt die Datei die Konfiguration und die Felder im Dashboard lassen sich nicht mehr bearbeiten.
+> **Hinweis zur Wrangler-Konfiguration:** Das Repository enthält bewusst **keine** `wrangler.jsonc`. Damit bleibt das Pages-Dashboard massgebend für Build-Einstellungen, Variablen und Secrets. Würde eine Wrangler-Datei mit `pages_build_output_dir` ergänzt, übernähme sie die Konfiguration, und die betreffenden Felder im Dashboard liessen sich nicht mehr bearbeiten.
 
 ---
 

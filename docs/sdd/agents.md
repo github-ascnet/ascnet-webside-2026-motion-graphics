@@ -72,12 +72,15 @@ Kartentabelle: `project_plan.md` §4.2. Zusätzlich:
 | `npm run build` | Produktions-Build nach `dist/` (minifiziert, `dist/` wird geleert) |
 | `npm run dev:api` | Pages Function lokal (`wrangler pages dev dist`, Port 8788); `npm run build` vorher |
 | `npx wrangler pages dev dist --port 8788` | wie oben, liefert Statuscodes und `_headers` wie Cloudflare (404, Clean URLs) |
+| `npm test` | HTTP-/SEO-Prüfungen (`scripts/test-http.mjs`), Pages-Server muss laufen |
+| `npm run test:browser` | Browser-Prüfungen (`scripts/test-browser.mjs`), braucht `puppeteer-core` (`--no-save`) und Chrome |
+| `npm run lighthouse` | Lighthouse-Messung der drei Seiten (`scripts/lighthouse.mjs`) |
 
 Lokale Werte: `.env` (Build-Variablen, Vorlage `.env.example`) und `.dev.vars` (Secrets für Wrangler, Vorlage `.dev.vars.example`). Beide stehen in `.gitignore` und dürfen **nie** committet werden.
 
 ## 6. Prüfroutine vor einer Freigabe
 
-So wurde bisher geprüft; Skripte liegen nicht im Repository (OP-009, DEC-024). Dokumentiere bei jedem Lauf, was geprüft wurde und was nicht prüfbar war.
+Die Prüfungen sind als Skripte im Repository (DEC-024). Ablauf: `npm run build`, `npm run dev:api` (Terminal 1), dann `npm test` (Punkte 2, 6, teils 1), `npm run test:browser` (Punkte 3, 4, 5, 7; braucht `npm install --no-save puppeteer-core@23.11.1` und Chrome) und `npm run lighthouse` (Punkt 8). Mit `BASE_URL=https://ascnet.ch` laufen sie auch live (Punkt 10). Die Function-Tests werden ohne `.dev.vars` übersprungen. Punkt 9 bleibt Handarbeit. Dokumentiere bei jedem Lauf, was geprüft wurde und was nicht prüfbar war.
 
 1. **Build:** `npm run build` ohne Fehler; `dist/` enthält alle Dateien (Seiten, `main.js`, `legal.js`, `fonts.css`, `fonts/`, `img/`, `robots.txt`, `sitemap.xml`, `_headers`, `404.html`, Favicons).
 2. **Ausgeliefertes HTML** (`wrangler pages dev`): Statuscodes `/` 200, `/impressum` 200, `/datenschutz` 200, `/gibtsnicht` 404, `/impressum.html` Weiterleitung, `/api/contact` GET 405.
