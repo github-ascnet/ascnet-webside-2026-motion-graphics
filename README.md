@@ -41,7 +41,7 @@ Das Formular sendet an die eigene Pages Function `functions/api/contact.js` (`PO
 - Der öffentliche Turnstile Site Key kommt beim Build aus der Umgebungsvariable `TURNSTILE_SITE_KEY`, der Mapbox-Token aus `MAPBOX_TOKEN`. Lokal stehen beide in einer `.env` (Vorlage `.env.example`, nicht im Git).
 ## Impressum und Datenschutz
 
-`src/impressum.html` und `src/datenschutz.html` sind eigene Seiten mit dem schlanken Webpack-Einstieg `src/legal.js` (nur Styles, keine Animation). Die Firmendaten stammen aus dem UID-Register (CHE-180.731.045) und Zefix. Die Datenschutzerklärung beschreibt die tatsächlich eingesetzten Dienste: Cloudflare (Hosting), Cloudflare Turnstile, EmailJS und Microsoft (Kontaktformular), Mapbox (Karte) und Google Fonts. Wird ein Dienst ergänzt oder entfernt, muss die Erklärung nachgeführt werden.
+`src/impressum.html` und `src/datenschutz.html` sind eigene Seiten mit dem schlanken Webpack-Einstieg `src/legal.js` (nur Styles, keine Animation). Die Firmendaten stammen aus dem UID-Register (CHE-180.731.045) und Zefix. Die Datenschutzerklärung beschreibt die tatsächlich eingesetzten Dienste: Cloudflare (Hosting und Web Analytics), Cloudflare Turnstile, EmailJS und Microsoft (Kontaktformular) sowie Mapbox (Karte, erst beim Heranscrollen geladen). Die Schriften werden lokal ausgeliefert (`src/fonts/`). Wird ein Dienst ergänzt oder entfernt, muss die Erklärung nachgeführt werden.
 ## SEO
 
 Titles, Descriptions, Canonicals, Open Graph, strukturierte Daten, `robots.txt`, `sitemap.xml`, `_headers` (noindex für pages.dev) und die 404-Seite sind in **`docs/SEO-IMPLEMENTATION.md`** beschrieben, inklusive Anleitung für Google Search Console und Cloudflare Web Analytics. `npm run build` erzeugt einen Produktions-Build.

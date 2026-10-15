@@ -15,6 +15,8 @@ const STATIC_FILES = [
   "sitemap.xml",
   "_headers",
   "favicon.ico",
+  "fonts.css",
+  "fonts",
 ];
 
 // Kopiert STATIC_FILES in die Build-Ausgabe; im Dev-Server mit Live-Reload
@@ -76,6 +78,10 @@ const legalPages = ["impressum", "datenschutz", "404"].map(
       template: `./src/${name}.html`,
       filename: `${name}.html`,
       chunks: ["legal"],
+      // legal.js enthält nur die Styles (style-loader): im <head> und blockierend
+      // laden, damit sie vor dem ersten Zeichnen stehen – sonst springt das Layout
+      inject: "head",
+      scriptLoading: "blocking",
     })
 );
 

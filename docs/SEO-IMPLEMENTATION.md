@@ -67,6 +67,9 @@ Geprüft am 15.10.2026 an der Live-Seite (`curl`) und im Repository.
 | `src/chapters.js` | `aria-label` „Menü schliessen“ (Schweizer Schreibweise) |
 | `webpack.config.js` | neue Dateien in `STATIC_FILES`, `404.html` als Seite, `publicPath: "/"`, Clean URLs im Dev-Server, Modus nicht mehr fest auf `development` |
 | `package.json` | `build` = `webpack --mode production`; `start` explizit `development` |
+| `src/mapbox.js` | Mapbox wird erst beim Heranscrollen an die Karte geladen |
+| `src/fonts.css`, `src/fonts/` | **neu**: lokale Webfonts statt Google Fonts (inkl. Lizenzen) |
+| `src/*.html` | Google-Fonts- und Mapbox-Einbindung entfernt, lokale `fonts.css` mit Preload |
 
 ---
 
@@ -158,9 +161,12 @@ Ein einziger Block mit `@graph`:
 
 Nicht enthalten: `sameAs` (keine verifizierten Profile bekannt), Bewertungen, FAQ, BreadcrumbList.
 
-### Performance (Build)
+### Performance
 
-`npm run build` erzeugt jetzt einen Produktions-Build (minifiziert, ohne `eval`). Der lokale Entwicklungsserver (`npm run dev`) läuft weiterhin im Entwicklungsmodus.
+- **Produktions-Build:** `npm run build` erzeugt einen minifizierten Build ohne `eval`. Der lokale Entwicklungsserver (`npm run dev`) läuft weiterhin im Entwicklungsmodus.
+- **Karte bei Bedarf laden:** `src/mapbox.js` lädt `mapbox-gl.js` und `mapbox-gl.css` erst, wenn der Kartenbereich bis auf etwa eine Bildschirmhöhe heranrückt (`IntersectionObserver`). Beim Seitenaufruf gibt es keine Anfrage an Mapbox mehr.
+- **Schriften lokal:** Saira und JetBrains Mono liegen als WOFF2 in `src/fonts/` (nur Zeichensätze latin und latin-ext, Lizenz SIL OFL 1.1 beigelegt) und werden über `src/fonts.css` eingebunden. Die meistgenutzte Datei wird vorgeladen. Keine Verbindung zu Google mehr.
+- **Kein Layoutsprung auf den Rechtsseiten:** `legal.js` enthält nur die Styles und wird im `<head>` blockierend geladen, damit die Styles vor dem ersten Zeichnen stehen.
 
 ---
 
@@ -240,8 +246,13 @@ Es wurde **kein Skript ins Repository** eingebaut. Cloudflare Pages kann den Ana
 | Impressum – nachher | **100** | 92 | 96 | 95 | 2,6 s |
 | Datenschutz – vorher | 92 | 92 | 96 | 95 | 2,6 s |
 | Datenschutz – nachher | **100** | 93 | 96 | 95 | 2,6 s |
+| Start – mit Lazy-Karte und lokalen Schriften | **100** | **83** | 96 | 96 | **3,1 s** |
+| Impressum – mit lokalen Schriften | **100** | **99** | 96 | 95 | 2,0 s |
+| Datenschutz – mit lokalen Schriften | **100** | **99** | 96 | 95 | 2,0 s |
 
-Einordnung: Die Performance-Werte der Startseite sind lokal ermittelt und wegen der Software-Grafik im Test (kein GPU-Zugriff) eher zu pessimistisch. Aussagekräftig sind die Werte echter Besucher in Cloudflare Web Analytics (Core Web Vitals). Laut Lighthouse verbraucht **Mapbox** (`mapbox-gl.js`) mit rund 6,1 s den grössten Teil der Rechenzeit auf der Startseite, siehe offene Punkte.
+Startseite im letzten Schritt zusätzlich: Total Blocking Time 5,1 s → 0,2 s, übertragene Datenmenge 816 KB → 320 KB, First Contentful Paint 0,9 s. Beim Seitenaufruf gemessen: 0 Anfragen an Google, 0 an Mapbox; nach dem Scrollen zum Kontakt lädt die Karte vollständig (Marker, Popup).
+
+Einordnung: Die Performance-Werte sind lokal ermittelt und wegen der Software-Grafik im Test (kein GPU-Zugriff) eher zu pessimistisch. Aussagekräftig sind die Werte echter Besucher in Cloudflare Web Analytics (Core Web Vitals). Den grössten Teil der Rechenzeit verbrauchte zuvor **Mapbox** (rund 6,1 s); seit dem verzögerten Laden fällt diese Last beim Seitenaufruf weg.
 
 ### Noch nicht live geprüft
 
@@ -263,10 +274,10 @@ Die Änderungen sind erst nach dem Deployment auf ascnet.ch wirksam. Nach dem Pu
 
 ### Empfehlungen (nicht umgesetzt, da ausserhalb des freigegebenen Umfangs)
 
-1. **Mapbox erst bei Bedarf laden** (grösster Performance-Hebel): `mapbox-gl.js` und `mapbox-gl.css` erst laden, wenn der Kontaktbereich in die Nähe des Bildschirms kommt. Die Optik bleibt gleich, die Startseite lädt deutlich schneller.
-2. **CSS als Datei ausliefern** statt per JavaScript (`mini-css-extract-plugin`): früheres erstes Rendern. Das ist eine Architekturänderung am Build und eine neue Abhängigkeit.
-3. **Eigenes Open-Graph-Bild** im Format 1200 × 630 px: wirkt beim Teilen auf LinkedIn und Co. besser als das breite Logo.
-4. **Google Fonts lokal ausliefern:** spart einen externen Dienst (Datenschutz) und eine Verbindung.
+1. **CSS als Datei ausliefern** statt per JavaScript (`mini-css-extract-plugin`): früheres erstes Rendern. Das ist eine Architekturänderung am Build und eine neue Abhängigkeit.
+2. **Eigenes Open-Graph-Bild** im Format 1200 × 630 px: wirkt beim Teilen auf LinkedIn und Co. besser als das breite Logo.
+
+Umgesetzt am 15.10.2026 (zuvor hier empfohlen): verzögertes Laden der Karte, lokale Schriften.
 
 ---
 
