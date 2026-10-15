@@ -46,6 +46,10 @@ Das Formular sendet an die eigene Pages Function `functions/api/contact.js` (`PO
 
 Titles, Descriptions, Canonicals, Open Graph, strukturierte Daten, `robots.txt`, `sitemap.xml`, `_headers` (noindex für pages.dev) und die 404-Seite sind in **`docs/SEO-IMPLEMENTATION.md`** beschrieben, inklusive Anleitung für Google Search Console und Cloudflare Web Analytics. `npm run build` erzeugt einen Produktions-Build.
 
+## Spezifikation (SDD)
+
+Was gebaut wurde, warum und in welcher Reihenfolge, steht in **`docs/sdd/`**: `project_plan.md` (Anforderungen, Architektur, Betrieb, offene Punkte), `decisions.md` (Entscheidungen), `build_plan.md` (Baufolge) und `agents.md` (Arbeitsregeln). Änderungen werden zuerst mit `docs/sdd/templates/change.md` als Spec erfasst.
+
 ## Hinweise
 - Die Entwicklung läuft im Modus "development".
 - Passe die Konfigurationen nach Bedarf an.
