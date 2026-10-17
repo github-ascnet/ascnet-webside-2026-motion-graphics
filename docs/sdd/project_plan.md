@@ -32,7 +32,7 @@ Zielgruppe: Unternehmenskunden, Interessenten und Projektpartner im deutschsprac
 
 ## 2. Scope und Nicht-Scope
 
-**Im Scope (Ist):** eine Startseite mit fünf Kapiteln, Impressum, Datenschutzerklärung, 404-Seite, Kontaktformular mit serverseitigem Versand, Karte, SEO-Grundlagen, Besucherstatistik über Cloudflare.
+**Im Scope (Ist):** eine Startseite mit fünf Kapiteln, Impressum, Datenschutzerklärung, AGB, 404-Seite, Kontaktformular mit serverseitigem Versand, Karte, SEO-Grundlagen, Besucherstatistik über Cloudflare.
 
 **Nicht im Scope** (bewusst nicht vorhanden bzw. ausdrücklich ausgeschlossen):
 
@@ -42,7 +42,7 @@ Zielgruppe: Unternehmenskunden, Interessenten und Projektpartner im deutschsprac
 | Google Analytics, Tracking-Events für Kalkulator und Formular, Tracking-Cookies | `[Auftrag]` |
 | Mehrsprachigkeit (kein hreflang) | `[Doku]` `docs/SEO-IMPLEMENTATION.md` |
 | Benutzerkonten, Datenbank, Zahlungen | `[Code]` (nicht vorhanden) |
-| Rechtsberatung: Impressum und Datenschutzerklärung sind Entwürfe nach bestem Wissen und sollen vor Veröffentlichung fachkundig geprüft werden | `[Auftrag]` |
+| Rechtsberatung: Impressum, Datenschutzerklärung und AGB sind Entwürfe nach bestem Wissen und sollen vor Veröffentlichung fachkundig geprüft werden | `[Auftrag]` |
 
 ## 3. Anforderungen (Ist-Sollbild)
 
@@ -94,6 +94,7 @@ Jede Anforderung nennt Herkunft, die massgebende Entscheidung (DEC), das Arbeits
 |---|---|---|---|---|---|
 | REQ-040 | **Impressum** (`/impressum`): Anschrift, E-Mail info@ascnet.ch, Rechtsform GmbH, Sitz Zug, Handelsregisteramt Kanton Zug, Firmennummer CH-170.4.011.922-0, UID CHE-180.731.045, MWST-Nummer CHE-180.731.045 MWST, Haftung, Preis-Kalkulator-Hinweis, Links, Urheberrecht, Marken. Datenquelle: UID-Register und Zefix. | `[Auftrag]` `[Code]` | DEC-014, DEC-021 | BP-007 | Angaben stimmen mit UID-Register überein |
 | REQ-041 | **Datenschutzerklärung** (`/datenschutz`) nach Schweizer DSG: Verantwortliche Stelle, Hosting/Server-Logdaten/Cloudflare Web Analytics, Kontaktformular (EmailJS, Microsoft, Turnstile), Karte Mapbox, Schriften (lokal), Browser-Speicher (kein Cookie), Ausland, Aufbewahrung, Rechte, Änderungen. Muss bei jedem Hinzufügen oder Entfernen eines Drittdienstes nachgeführt werden. | `[Auftrag]` `[Code]` | DEC-014 | BP-007, BP-012, BP-013 | Beschriebene Dienste entsprechen den tatsächlich geladenen (siehe 6.2) |
+| REQ-043 | **AGB** (`/agb`, CHG-002): eigene Allgemeine Geschäftsbedingungen der ASCNET Solutions GmbH als Anbieterin für Geschäftskunden (14 Ziffern, u. a. Geltung/Rangfolge, Offerte, Vergütung, Abnahme, Haftung, Gerichtsstand Zug) und Ziffer 14: Auf Verlangen öffentlicher Auftraggeber gelten die DVS-AGB (Ausgabe März 2025, Nachfolger der SIK-AGB). Footer-Link, Sitemap-Eintrag, Aufnahme in die Prüfskripte. | `[Auftrag]` `[Code]` | DEC-025 | BP-016 | `/agb` 200; Tests und Handyansicht bestanden `[Messung]`; juristische Prüfung offen (OP-014) |
 | REQ-042 | Fehlerseite `404.html` (noindex), liefert echten Status 404 für unbekannte Adressen. | `[Code]` | DEC-018 | BP-011 | `/gibtsnicht` → 404 `[Messung]` |
 
 ### 3.6 Suchmaschinen (SEO)
@@ -139,7 +140,7 @@ Alle Dateien aus `git ls-files` (Stand `0e6c95f`):
 | Datei | Verantwortung |
 |---|---|
 | `src/index.html` | Startseite: Head (SEO, OG, JSON-LD), Intro-Markup, Header, Dock, fünf Kapitel, Footer, Skills-Modal, Toast-Container, Skript-Einbindung |
-| `src/impressum.html`, `src/datenschutz.html` | Rechtsseiten (Einstieg `legal.js`) |
+| `src/impressum.html`, `src/datenschutz.html`, `src/agb.html` | Rechtsseiten (Einstieg `legal.js`) |
 | `src/404.html` | Fehlerseite (Einstieg `legal.js`, noindex) |
 | `src/main.js` | Einstieg der Startseite: Kalkulator, Scroll-Reveal, Tilt-Karten, Init von Fasern, Kapitel, Kontaktformular |
 | `src/legal.js` | Einstieg der Rechtsseiten (nur `main.css`) |
@@ -238,4 +239,5 @@ Diese Punkte wurden beim INIT festgestellt und **nicht** stillschweigend korrigi
 | OP-010 | Web Analytics und Search Console sind laut Projektleitung eingerichtet; der Beacon ist live nachgewiesen, die Indexierung der drei Seiten wurde nicht geprüft. | fehlende Information | `[Messung]` |
 | OP-011 | `sitemap.xml`: `lastmod` ist von Hand gepflegt (alle drei Seiten 2026-10-15). | Pflegeaufwand | `[Code]` |
 | OP-012 | Lokale Sicherungen früherer Entwurfsstände (`_backup_*`) liegen ausserhalb des Gits und sind absichtlich nicht dokumentiert. | Hinweis | `[Auftrag]` |
+| OP-014 | **AGB (`/agb`) nicht juristisch geprüft.** Der Text ist ein Entwurf (Haftungsgrenze CHF 100'000, Gewährleistung 12 Monate, Verzugszins 5 %, Gerichtsstand Zug sind Annahmen der Entwurfsphase). Der Link in Ziffer 14 zeigt auf die Kopie des Kantons Solothurn; offizielle DVS-Quelle noch zu ersetzen. Vor dem Verweis in Offerten prüfen lassen. | offene Aufgabe | `[Auftrag]` |
 | OP-013 | `seo-prompt.txt` (Auftrag der SEO-Phase) liegt nur lokal und ist nicht im Git. | Hinweis | `[Code]` `.gitignore` |

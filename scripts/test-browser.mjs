@@ -122,7 +122,7 @@ test("Intro: spielt mit ?intro, ist nach ca. 5 s vorbei, kein Intro bei gesetzte
 });
 
 test("Handyansicht: kein horizontaler Überlauf", async () => {
-  for (const path of ["/", "/impressum", "/datenschutz"]) {
+  for (const path of ["/", "/impressum", "/datenschutz", "/agb"]) {
     const { page } = await open(path, { viewport: { width: 390, height: 844, deviceScaleFactor: 2, isMobile: true }, reduced: true });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     assert.ok(overflow <= 0, `${path}: ${overflow}px Überlauf`);

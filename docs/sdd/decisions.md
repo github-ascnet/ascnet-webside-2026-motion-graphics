@@ -199,3 +199,10 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 - **Entscheid:** Die Prüfroutine aus `agents.md` §6 liegt als Skripte unter `scripts/`: `test-http.mjs` (`npm test`, nur Node-Bordmittel), `test-browser.mjs` (`npm run test:browser`) und `lighthouse.mjs` (`npm run lighthouse`).
 - **Begründung:** Prüfungen sind reproduzierbar, ohne dass sie jedes Mal neu geschrieben werden.
 - **Konsequenzen:** `puppeteer-core` und Lighthouse stehen bewusst **nicht** in `package.json` (Cloudflare installiert alle Abhängigkeiten; Installation per `npm install --no-save puppeteer-core@23.11.1`, Lighthouse per `npx` in fester Version). Die Tests prüfen den Ist-Stand (REQ-063-Werte, Referenzfall), sie legen keine neuen Anforderungen fest. Function-Tests werden ohne `.dev.vars` übersprungen.
+
+## DEC-025 Eigene AGB als Anbieterin, DVS-AGB nur auf Verlangen
+- **Status:** gültig · **Datum:** 17.10.2026 · **Herkunft:** `[Auftrag]` (Variante C, CHG-002)
+- **Sachverhalt:** Die SIK-AGB (Ausgabe Januar 2020) sind aus Sicht des Auftraggebers geschrieben (Ziff. 1.2: Auftraggeber verweist, Anbieter anerkennt; AGB des Anbieters gelten nicht) und wurden durch die AGB für IKT-Leistungen der Digitalen Verwaltung Schweiz (DVS), Ausgabe März 2025, abgelöst. `[Doku]`
+- **Entscheid:** `/agb` enthält eigene, schlanke AGB der ASCNET Solutions GmbH als Anbieterin. Ziffer 14 hält fest, dass auf Verlangen eines öffentlichen Auftraggebers dessen DVS-AGB gelten. Die SIK-AGB 2020 werden nicht übernommen oder kopiert.
+- **Begründung:** Als Standard für Geschäftskunden passt nur eine Anbieter-Fassung; der Verweis auf eine überholte Ausgabe wäre veraltet.
+- **Konsequenzen:** Verbindlich werden die AGB erst durch Verweis in Offerte oder Vertrag. Der Text ist ein Entwurf bis zur juristischen Prüfung (OP-014). Bei Textänderungen Datum im Seitenkopf und `lastmod` in der Sitemap nachführen.

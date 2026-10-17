@@ -83,10 +83,10 @@ Lokale Werte: `.env` (Build-Variablen, Vorlage `.env.example`) und `.dev.vars` (
 Die Prüfungen sind als Skripte im Repository (DEC-024). Ablauf: `npm run build`, `npm run dev:api` (Terminal 1), dann `npm test` (Punkte 2, 6, teils 1), `npm run test:browser` (Punkte 3, 4, 5, 7; braucht `npm install --no-save puppeteer-core@23.11.1` und Chrome) und `npm run lighthouse` (Punkt 8). Mit `BASE_URL=https://ascnet.ch` laufen sie auch live (Punkt 10). Die Function-Tests werden ohne `.dev.vars` übersprungen. Punkt 9 bleibt Handarbeit. Dokumentiere bei jedem Lauf, was geprüft wurde und was nicht prüfbar war.
 
 1. **Build:** `npm run build` ohne Fehler; `dist/` enthält alle Dateien (Seiten, `main.js`, `legal.js`, `fonts.css`, `fonts/`, `img/`, `robots.txt`, `sitemap.xml`, `_headers`, `404.html`, Favicons).
-2. **Ausgeliefertes HTML** (`wrangler pages dev`): Statuscodes `/` 200, `/impressum` 200, `/datenschutz` 200, `/gibtsnicht` 404, `/impressum.html` Weiterleitung, `/api/contact` GET 405.
+2. **Ausgeliefertes HTML** (`wrangler pages dev`): Statuscodes `/` 200, `/impressum` 200, `/datenschutz` 200, `/agb` 200, `/gibtsnicht` 404, `/impressum.html` Weiterleitung, `/api/contact` GET 405.
 3. **Kalkulator-Referenzfall:** 63 Tage Collaboration, 60 Tage BI, Modus Tagessatz (8 Std/Tag), Onsite 30 %, PLZ 8000 → ohne Zuschlag CHF 169'440, Zuschlag CHF 12'708, **gesamt mit Zuschlag CHF 182'148**.
 4. **Navigation:** Sprung zu „Preise“ zeigt 04/05, Pfeiltaste rechts geht zu „Kontakt“; Skills-Fenster öffnet.
-5. **Handy (390 px):** kein horizontaler Überlauf auf Start, Impressum, Datenschutz.
+5. **Handy (390 px):** kein horizontaler Überlauf auf Start, Impressum, Datenschutz, AGB.
 6. **SEO:** genau eine H1 pro Seite; Title/Description eindeutig; Canonical stimmt; JSON-LD per `JSON.parse` gültig, ein Block; keine „ß“.
 7. **Dienste beim Aufruf:** 0 Anfragen an Google und Mapbox; Mapbox lädt nach dem Scrollen zur Karte.
 8. **Lighthouse** (Mobile): SEO 100 als Ziel; Verschlechterungen der Performance begründen.

@@ -159,6 +159,16 @@ BP-001 ─┬─ BP-002 ── BP-003 ── BP-004 ── BP-005 ─┬─ BP-0
 - **REQ/DEC:** REQ-005, 063, 064 · DEC-023, DEC-024 · Spezifikation: `changes/CHG-001-aufraeumen-und-pruefskripte.md`
 - **Status:** abgeschlossen
 
+## BP-016 AGB-Seite (CHG-002)
+- **Ziel:** Eigene AGB als Anbieterin plus Hinweis auf DVS-AGB für öffentliche Auftraggeber.
+- **Scope:** Seite `/agb` im Rechtsseiten-Design, Footer-Link auf allen Seiten, Sitemap, Build-Eintrag und Dev-Rewrite, Prüfskripte. Nicht im Scope: Verweis in Offerten, juristische Prüfung.
+- **Voraussetzungen:** BP-007.
+- **Dateien:** `src/agb.html`, `src/index.html`, `src/impressum.html`, `src/datenschutz.html`, `src/404.html`, `src/sitemap.xml`, `webpack.config.js`, `scripts/*`, `docs/sdd/*`.
+- **Abschlusskriterien:** `/agb` liefert 200 mit eigenem Title, Description und Canonical; Sitemap, Footer und 404-Links stimmen; `npm test` und `npm run test:browser` bestanden.
+- **Nachweis:** `[Messung]` `npm test` 10 bestanden, 3 übersprungen; `npm run test:browser` 5 von 5.
+- **REQ/DEC:** REQ-043 · DEC-025 · Spezifikation: `changes/CHG-002-agb.md`
+- **Status:** abgeschlossen
+
 ---
 
 ## Vorlage für neue Arbeitspakete

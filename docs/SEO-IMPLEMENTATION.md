@@ -82,6 +82,7 @@ Geprüft am 15.10.2026 an der Live-Seite (`curl`) und im Repository.
 | `/` | IT-Beratung Zug: Exchange, Teams, Entra ID & BI \| ASCNET (56 Zeichen) | Microsoft Exchange und Teams, Active Directory und Entra ID, .NET- und PowerShell-Entwicklung, Business Intelligence mit SQL Server und Power BI – ASCNET, Zug. (159) |
 | `/impressum` | Impressum – ASCNET Solutions GmbH, Zug (38) | Impressum der ASCNET Solutions GmbH, Zug: Anschrift, Handelsregister, UID CHE-180.731.045, MWST-Nummer sowie Haftungs- und Urheberrechtshinweise. (145) |
 | `/datenschutz` | Datenschutzerklärung – ASCNET Solutions GmbH (44) | Datenschutzerklärung der ASCNET Solutions GmbH nach Schweizer DSG: Hosting, Kontaktformular, Karte, Schriften, Besucherstatistik ohne Cookies sowie Ihre Rechte. (160) |
+| `/agb` | AGB – ASCNET Solutions GmbH | Allgemeine Geschäftsbedingungen der ASCNET Solutions GmbH, Zug: Offerte, Vergütung, Abnahme, Haftung und Gerichtsstand. Für die öffentliche Hand gelten die DVS-AGB. |
 | 404 | Seite nicht gefunden – ASCNET Solutions GmbH | `noindex, follow` |
 
 Alle Begriffe in Title und Description sind durch Seiteninhalt bzw. `src/skills.json` belegt. „Microsoft 365“, „Cross-Forest“ und Zertifizierungen werden nicht genannt, weil die Seite sie nicht ausdrücklich belegt.
@@ -116,6 +117,7 @@ Abgedeckte Suchkontexte: Microsoft Exchange / Exchange Hybrid, Microsoft Teams, 
 | Startseite | `https://ascnet.ch/` |
 | Impressum | `https://ascnet.ch/impressum` |
 | Datenschutz | `https://ascnet.ch/datenschutz` |
+| AGB | `https://ascnet.ch/agb` |
 
 Einheitlich ohne `www`, ohne `.html`, mit HTTPS, also passend zu den bestehenden Weiterleitungen.
 

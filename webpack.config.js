@@ -72,7 +72,7 @@ if (turnstileSiteKey === TURNSTILE_TEST_KEY) {
 
 // Rechtsseiten und Fehlerseite: eigener, schlanker Einstieg ohne Animation.
 // 404.html liefert Cloudflare Pages für unbekannte Pfade mit Status 404 aus.
-const legalPages = ["impressum", "datenschutz", "404"].map(
+const legalPages = ["impressum", "datenschutz", "agb", "404"].map(
   (name) =>
     new HtmlWebpackPlugin({
       template: `./src/${name}.html`,
@@ -110,6 +110,7 @@ module.exports = {
       rewrites: [
         { from: /^\/impressum\/?$/, to: "/impressum.html" },
         { from: /^\/datenschutz\/?$/, to: "/datenschutz.html" },
+        { from: /^\/agb\/?$/, to: "/agb.html" },
         // alle übrigen unbekannten Seiten (nicht "/") wie live auf die Fehlerseite
         { from: /^\/.+/, to: "/404.html" },
       ],

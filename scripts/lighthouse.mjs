@@ -19,7 +19,7 @@ const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Ap
 const dir = mkdtempSync(join(tmpdir(), "ascnet-lh-"));
 let failed = false;
 
-for (const path of ["/", "/impressum", "/datenschutz"]) {
+for (const path of ["/", "/impressum", "/datenschutz", "/agb"]) {
   const out = join(dir, "report.json");
   const res = spawnSync(
     "npx",

@@ -10,7 +10,7 @@ import { test, before } from "node:test";
 import assert from "node:assert/strict";
 
 const BASE = (process.env.BASE_URL || "http://127.0.0.1:8788").replace(/\/$/, "");
-const PAGES = ["/", "/impressum", "/datenschutz"];
+const PAGES = ["/", "/impressum", "/datenschutz", "/agb"];
 
 const get = (path, init) => fetch(BASE + path, { redirect: "manual", ...init });
 const text = async (path) => (await get(path)).text();
@@ -63,7 +63,7 @@ test("robots.txt: Sitemap-Verweis, /api/ gesperrt, Inhalt frei", async () => {
 test("Sitemap: nur kanonische Seiten, jede mit 200 und passendem Canonical", async () => {
   const xml = await text("/sitemap.xml");
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.deepEqual(locs.sort(), ["https://ascnet.ch/", "https://ascnet.ch/datenschutz", "https://ascnet.ch/impressum"]);
+  assert.deepEqual(locs.sort(), ["https://ascnet.ch/", "https://ascnet.ch/agb", "https://ascnet.ch/datenschutz", "https://ascnet.ch/impressum"]);
   for (const loc of locs) {
     const path = new URL(loc).pathname;
     const html = await text(path);
