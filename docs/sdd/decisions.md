@@ -36,6 +36,7 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 | DEC-022 | Build erzeugt `dist/` vollständig | gültig | REQ-060 |
 | DEC-023 | `wrangler.jsonc` entfernt | gültig | REQ-060 |
 | DEC-024 | Prüfskripte im Repository | gültig | REQ-063 |
+| DEC-025 | Eigene AGB als Anbieterin, DVS-AGB nur auf Verlangen | gültig | REQ-043 |
 
 ---
 
@@ -129,7 +130,7 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 
 ## DEC-014 Rechtsseiten als schlanker Einstieg, Quelle UID-Register
 - **Status:** gültig · **Datum:** 12.10.2026
-- **Entscheid:** Impressum, Datenschutzerklärung und 404 laden nur `legal.js` (Styles) ohne Fasern, Intro und Navigation. `legal.js` steht im `<head>` und lädt blockierend (verhindert Layoutsprung). Firmendaten stammen aus dem UID-Register (CHE-180.731.045) und Zefix.
+- **Entscheid:** Impressum, Datenschutzerklärung, AGB (CHG-002) und 404 laden nur `legal.js` (Styles) ohne Fasern, Intro und Navigation. `legal.js` steht im `<head>` und lädt blockierend (verhindert Layoutsprung). Firmendaten stammen aus dem UID-Register (CHE-180.731.045) und Zefix.
 - **Begründung:** Lesbarkeit, geringe Ladezeit. Inhalte sind Entwurf und fachkundig zu prüfen. `[Auftrag]`
 - **Konsequenzen:** Jede Änderung an Drittdiensten verlangt Nachführung der Datenschutzerklärung (agents.md).
 
@@ -154,7 +155,7 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 ## DEC-018 SEO-Grundsätze
 - **Status:** gültig · **Datum:** 15.10.2026
 - **Entscheid:**
-  1. Kanonische Adressen: `https://ascnet.ch/`, `/impressum`, `/datenschutz` (ohne `www`, ohne `.html`); interne Links zeigen darauf.
+  1. Kanonische Adressen: `https://ascnet.ch/`, `/impressum`, `/datenschutz`, `/agb` (ohne `www`, ohne `.html`); interne Links zeigen darauf.
   2. `lang="de-CH"`; Schweizer Schreibweise („ss“).
   3. Echtes 404 für unbekannte Adressen (`404.html`, `noindex`).
   4. `*.pages.dev` erhält `X-Robots-Tag: noindex`.

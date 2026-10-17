@@ -62,7 +62,7 @@ Geprüft am 15.10.2026 an der Live-Seite (`curl`) und im Repository.
 | `src/404.html` | **neu**: Fehlerseite im Layout der Rechtsseiten, `noindex`; Cloudflare Pages liefert sie mit Status 404 aus |
 | `src/favicon.ico`, `src/img/favicon-32.png`, `src/img/apple-touch-icon.png` | **neu**: aus dem bestehenden Logo abgeleitet (Buchstabe „A“ des Schriftzugs) |
 | `src/index.html` | Title, Description, Canonical, Robots, Open Graph, Twitter Card, Favicon-Links, `lang="de-CH"`, strukturierte Daten als ein `@graph`, Leistungskarten ergänzt, „ß“ → „ss“, interne Links kanonisch |
-| `src/impressum.html`, `src/datenschutz.html` | Title, Description, Canonical, Robots, Open Graph, Favicon-Links, `lang="de-CH"`, interne Links kanonisch |
+| `src/impressum.html`, `src/datenschutz.html`, `src/agb.html` | Title, Description, Canonical, Robots, Open Graph, Favicon-Links, `lang="de-CH"`, interne Links kanonisch |
 | `src/datenschutz.html` | Abschnitt 02 um Cloudflare Web Analytics ergänzt, Abschnitt 06 angepasst |
 | `src/chapters.js` | `aria-label` „Menü schliessen“ (Schweizer Schreibweise) |
 | `webpack.config.js` | neue Dateien in `STATIC_FILES`, `404.html` als Seite, `publicPath: "/"`, Clean URLs im Dev-Server, Modus nicht mehr fest auf `development` |
@@ -104,7 +104,7 @@ Abgedeckte Suchkontexte: Microsoft Exchange / Exchange Hybrid, Microsoft Teams, 
 
 - **Sprache:** `lang="de-CH"` auf allen Seiten, `og:locale=de_CH`.
 - **Schreibweise:** „Grösse“, „massgeschneiderte“, „grösstmöglichen“, „Schliessen“.
-- **Interne Links:** zeigen direkt auf `/`, `/impressum`, `/datenschutz`, ohne den Umweg über 308.
+- **Interne Links:** zeigen direkt auf `/`, `/impressum`, `/datenschutz`, `/agb`, ohne den Umweg über 308.
 
 ---
 
@@ -186,7 +186,7 @@ Voraussetzungen sind erfüllt: Sitemap erreichbar, `robots.txt` gültig, Canonic
    - In der Search Console auf **Bestätigen** klicken. Die DNS-Aktualisierung dauert meist wenige Minuten.
 4. **Sitemap einreichen:** links **Sitemaps** → `sitemap.xml` eintragen (vollständig: `https://ascnet.ch/sitemap.xml`) → **Senden**. Status sollte nach kurzer Zeit „Erfolgreich“ zeigen, mit 3 gefundenen URLs.
 5. **Indexierung prüfen:**
-   - **URL-Prüfung** oben: `https://ascnet.ch/` eingeben → „Indexierung beantragen“. Dasselbe für `/impressum` und `/datenschutz`.
+   - **URL-Prüfung** oben: `https://ascnet.ch/` eingeben → „Indexierung beantragen“. Dasselbe für `/impressum`, `/datenschutz` und `/agb`.
    - Nach einigen Tagen unter **Indexierung → Seiten** kontrollieren: erwartet sind 3 indexierte Seiten. Die `pages.dev`-Adresse erscheint nicht, sie liegt ausserhalb der Property und ist `noindex`.
 6. **Suchleistung beobachten:** **Leistung → Suchergebnisse** zeigt Impressionen, Klicks, CTR, durchschnittliche Position und die Suchanfragen. Erste Daten erscheinen nach etwa 2–3 Tagen.
 
@@ -225,7 +225,7 @@ Es wurde **kein Skript ins Repository** eingebaut. Cloudflare Pages kann den Ana
 |---|---|
 | `npm run build` (production) | erfolgreich, keine Warnungen ausser der bewussten Turnstile-Test-Key-Meldung lokal |
 | `main.js` | 144 KB → 104 KB, `eval`-Aufrufe 17 → 0 |
-| Statuscodes | `/` 200 · `/impressum` 200 · `/datenschutz` 200 · `/gibtsnicht` **404** · `/a/b/c` **404** · `/api/contact` 405 |
+| Statuscodes | `/` 200 · `/impressum` 200 · `/datenschutz` 200 · `/agb` 200 · `/gibtsnicht` **404** · `/a/b/c` **404** · `/api/contact` 405 |
 | `robots.txt` | 200, `text/plain` |
 | `sitemap.xml` | 200, `application/xml` |
 | Favicon | `/favicon.ico` 200, `/img/favicon-32.png` 200 |

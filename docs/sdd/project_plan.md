@@ -1,6 +1,6 @@
 # project_plan.md – ascnet.ch (Future-State)
 
-Rückwärts erstellte Spezifikation (SDD-Modus **INIT**). Stand: 15.10.2026, Repository-Stand `0e6c95f`.
+Rückwärts erstellte Spezifikation (SDD-Modus **INIT**). Stand: 17.10.2026 (nachgeführt mit CHG-002), Repository-Stand `3134cd0`.
 
 **Lesehilfe:** Diese Datei beschreibt das **Sollbild** des heute live laufenden Standes. Es wurde aus dem Ist-Zustand und aus den Aufträgen der Projektleitung abgeleitet, nicht umgekehrt. Aussagen tragen eine Herkunftsmarke:
 
@@ -56,7 +56,7 @@ Jede Anforderung nennt Herkunft, die massgebende Entscheidung (DEC), das Arbeits
 | REQ-002 | Typografie: **Saira** (Versalien, kursive Akzentwörter in Gold) für Überschriften und Text, **JetBrains Mono** für Labels, Zähler, Klammer-Schreibweise `[ 03 ] ( … )`. | `[Auftrag]` `[Code]` `src/fonts.css` | DEC-005, DEC-017 | BP-005, BP-012 | Beide Schriften laden lokal (0 Anfragen an Google) |
 | REQ-003 | Logo oben links: Original-Logo in einer **Dunkel-Variante** (heller Schriftzug, goldene Punkte). Beim Scrollen verkleinert es sich von 84 px auf 50 px Höhe. | `[Auftrag]` `[Code]` `src/img/Logo_smart_dark.png`, `src/main.css` `.brand-logo` | DEC-006 | BP-005 | Logo lesbar auf `#222222`, auf Desktop und Handy geprüft |
 | REQ-004 | Abstände zwischen den Kapiteln eng gehalten (Abstand Inhalt → nächste Kapitelkopfzeile ca. 90 px Desktop, 84 px Handy). | `[Auftrag]` `[Messung]` | – | BP-005 | `.section { padding: clamp(2rem, 5vh, 4rem) 0 }` |
-| REQ-005 | Footer: „©2026 ASCNET Solutions GmbH“, Links „Impressum // Datenschutz“, Vermerk „Designed by Opus 5.5“. | `[Auftrag]` `[Code]` `src/index.html` | DEC-005 | BP-005 | Text im Footer; gilt auch für Impressum und Datenschutz (OP-007 erledigt) |
+| REQ-005 | Footer: „©2026 ASCNET Solutions GmbH“, Links „Impressum // Datenschutz // AGB“, Vermerk „Designed by Opus 5.5“. | `[Auftrag]` `[Code]` `src/index.html` | DEC-005 | BP-005 | Text im Footer; gilt auch für Impressum und Datenschutz (OP-007 erledigt) |
 
 ### 3.2 Hintergrund, Intro, Navigation
 

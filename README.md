@@ -32,7 +32,7 @@ Das Formular lokal testen: `.dev.vars.example` nach `.dev.vars` kopieren und aus
 | `src/index.html`, `src/main.js` | Startseite und Einstieg (Kalkulator, Reveal, Tilt) |
 | `src/fibers.js`, `src/intro.js`, `src/chapters.js` | Hintergrund (WebGL), Intro mit Kapitel-Loader, Dock und Kapitelsprünge |
 | `src/contact.js`, `functions/api/contact.js` | Formular im Browser und Pages Function (Turnstile, EmailJS) |
-| `src/impressum.html`, `src/datenschutz.html`, `src/404.html`, `src/legal.js` | Rechtsseiten und Fehlerseite (schlanker Einstieg) |
+| `src/impressum.html`, `src/datenschutz.html`, `src/agb.html`, `src/404.html`, `src/legal.js` | Rechtsseiten und Fehlerseite (schlanker Einstieg) |
 | `src/mapbox.js`, `src/skills.js`, `src/skills.json`, `src/plz.json` | Karte (lädt bei Bedarf), Skills-Fenster, Zuschlagstabelle |
 | `src/main.css`, `src/fonts*`, `src/img/` | Styles, lokale Schriften, Logos und Favicons |
 | `src/robots.txt`, `src/sitemap.xml`, `src/_headers`, `src/favicon.ico` | SEO- und Hosting-Dateien |
