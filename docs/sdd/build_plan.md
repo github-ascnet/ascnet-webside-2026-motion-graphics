@@ -3,7 +3,7 @@
 SDD-Modus **INIT**, Stand 15.10.2026. Die Arbeitspakete (BP) zeigen, **in welcher Reihenfolge** der heutige Stand entstanden ist. Sie wurden aus Code, Git, Dokumentation und dem Projektverlauf rekonstruiert, nicht vorab geplant.
 
 **Lesehilfe**
-- Status aller BP-001 bis BP-016: `abgeschlossen` (Ausnahmen genannt).
+- Status aller BP-001 bis BP-017: `abgeschlossen` (Ausnahmen genannt).
 - **Git-Zuordnung:** Das erste Commit `d5e6acc` (12.10.2026) bündelt die Arbeit von BP-001 bis BP-009. Eine feinere Zuordnung einzelner Pakete zu Commits ist **nicht belegbar** und wird nicht erfunden. Ab BP-010 ist die Zuordnung eindeutig.
 - **Nachweis** nennt Datei, Commit oder Messung. Herkunftsmarken wie in `project_plan.md`.
 - Zeitangaben vor dem 12.10. sind `[offen]`: Es gibt keine Commits davor. Die Entwicklung der Entwürfe fand im Projektverlauf zwischen dem 11. und 12.10.2026 statt. `[Auftrag]`
@@ -168,6 +168,16 @@ BP-001 ─┬─ BP-002 ── BP-003 ── BP-004 ── BP-005 ─┬─ BP-0
 - **Nachweis:** `[Messung]` `npm test` 10 bestanden, 3 übersprungen; `npm run test:browser` 5 von 5.
 - **REQ/DEC:** REQ-043 · DEC-025 · Spezifikation: `changes/CHG-002-agb.md`
 - **Status:** abgeschlossen
+
+## BP-017 Kapitel „Vorgehen“ (CHG-003)
+- **Ziel:** Ablauf eines Auftrags in vier Schritten mit je einem Ergebnis zeigen, zwischen Leistungen und Preise.
+- **Scope:** Sektion `#vorgehen`, Kapitelzähler `/006`, obere Navigation, Mobile-Menü, sechste Loader-Zeile, `ROW_STEP` 0.55, Klassen `.step-out`/`.step-foot`, Navigationstest. Nicht im Scope: JSON-LD, Meta-Texte, Kalkulator, Intro-Protokoll, AI-Karte.
+- **Voraussetzungen:** BP-004, BP-005.
+- **Dateien:** `src/index.html`, `src/main.css`, `src/intro.js`, `scripts/test-browser.mjs`, `docs/sdd/*`, `Todo.md`.
+- **Abschlusskriterien:** Dock zeigt „04/06 Vorgehen“ bzw. „05/06 Preise“; Loader erreicht 06/06 vor dem Ausblenden; 1440/800/390 px ohne Überlauf, Trennlinien der Ergebnisse auf Desktop auf gleicher Höhe; `npm test` und `npm run test:browser` bestanden.
+- **Nachweis:** `[Messung]` 25.10.2026: `npm test` 10 bestanden, 3 übersprungen; `npm run test:browser` 5 von 5; Loader „06 BEREIT“ nach ca. 4.2 s Intro-Zeit; Überlauf 0 px bei 1440/800/390. 26.10.2026: Geräte-Emulation (Touch, Pixeldichte 2–3) für iPhone SE/15/15 Pro Max und iPad mini, iPad, iPad Pro 11"/13" hoch und quer: Überlauf 0 px, nichts ragt aus den Karten, Ergebnislinien je Reihe auf gleicher Höhe (Pfeil hängt links, sonst brach er bei 1024 px allein um). Lighthouse nicht gemessen.
+- **REQ/DEC:** REQ-011, REQ-013, REQ-020, REQ-026 · DEC-026 · Spezifikation: `changes/CHG-003-kapitel-vorgehen.md`
+- **Status:** abgeschlossen (Aussagen zu bestätigen, OP-015)
 
 ---
 

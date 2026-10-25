@@ -1026,6 +1026,40 @@ body.is-jumping .site-footer {
   color: var(--accent);
 }
 
+/* --- Vorgehen: Schritte wie Leistungskarten, Ergebnis am Kartenfuss --- */
+.service-card p.step-out {
+  position: relative;
+  margin: auto 0 0;
+  padding: 1rem 0 0 1.4em;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+/* Pfeil hängt links, damit lange Wörter nicht allein umbrechen */
+.step-out span {
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+/* Vier Karten nebeneinander: Trennlinie auf gleicher Höhe (Ergebnis max. zwei Zeilen) */
+@media (min-width: 1024px) {
+  .service-card p.step-out {
+    min-height: calc(3em + 1rem);
+  }
+}
+.step-foot {
+  margin-top: 2rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
 /* Tilt-Karten mit Lichtkegel unter dem Zeiger */
 .tilt-card {
   --rx: 0deg;

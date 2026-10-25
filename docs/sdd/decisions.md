@@ -37,6 +37,7 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 | DEC-023 | `wrangler.jsonc` entfernt | gültig | REQ-060 |
 | DEC-024 | Prüfskripte im Repository | gültig | REQ-063 |
 | DEC-025 | Eigene AGB als Anbieterin, DVS-AGB nur auf Verlangen | gültig | REQ-043 |
+| DEC-026 | Kapitel „Vorgehen“ als sechstes Kapitel | gültig | REQ-011/013/020/026 |
 
 ---
 
@@ -207,3 +208,10 @@ Rückwärts erfasst (SDD-Modus **INIT**), Stand 15.10.2026. Jeder Eintrag beschr
 - **Entscheid:** `/agb` enthält eigene, schlanke AGB der ASCNET Solutions GmbH als Anbieterin. Ziffer 14 hält fest, dass auf Verlangen eines öffentlichen Auftraggebers dessen DVS-AGB gelten. Die SIK-AGB 2020 werden nicht übernommen oder kopiert.
 - **Begründung:** Als Standard für Geschäftskunden passt nur eine Anbieter-Fassung; der Verweis auf eine überholte Ausgabe wäre veraltet.
 - **Konsequenzen:** Verbindlich werden die AGB erst durch Verweis in Offerte oder Vertrag. Der Text ist ein Entwurf bis zur juristischen Prüfung (OP-014). Bei Textänderungen Datum im Seitenkopf und `lastmod` in der Sitemap nachführen.
+
+## DEC-026 Kapitel „Vorgehen“ als sechstes Kapitel
+- **Status:** gültig · **Datum:** 25.10.2026 · **Herkunft:** `[Auftrag]` (CHG-003)
+- **Kontext:** Die Startseite zeigte, was ASCNET anbietet (Leistungen) und was es kostet (Preise), aber nicht, wie ein Auftrag abläuft.
+- **Entscheid:** Neues Kapitel `#vorgehen` zwischen Leistungen und Preise mit vier Schritten (Analyse, Konzept, Umsetzung, Übergabe) und je einem greifbaren Ergebnis. Darstellung mit den bestehenden Kartenklassen (`frame service-card`), ohne Tilt-Effekt und ohne Details-Button. Kein Eintrag im JSON-LD (keine Leistung), keine Änderung am Kalkulator (DEC-008) und am Intro-Protokoll (vier Kompetenzfelder). DEC-004 Punkt 5 gilt sinngemäss für sechs Kapitel; der Loader-Versatz `ROW_STEP` sinkt von 0.62 auf 0.55 s, damit alle sechs Zeilen vor dem Ausblenden (4.6 s) fertig sind (Ende 4.15 s).
+- **Begründung:** Die Frage nach dem Ablauf stellt sich zwischen Leistungen und Preise; konkrete Ergebnisse statt Werte-Prosa. Den Gedanken „erst Spezifikation, dann Umsetzung“ trägt das Kapitel ohne die zurückgestellte AI-Karte (Todo.md Punkt 1).
+- **Konsequenzen:** Kapitelzähler, obere Navigation, Mobile-Menü und Loader zählen sechs Kapitel; Dock und Timeline leiten die Zahl selbst aus `data-scene` ab. Die Aussagen im Kapitel sind Zusagen an Kunden und von der Projektleitung zu bestätigen (OP-015).

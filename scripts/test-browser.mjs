@@ -87,11 +87,16 @@ test("Navigation: Kapitelsprung, Pfeiltaste, Skills-Fenster", async () => {
   await sleep(1200);
   await page.click('.top-nav a[href="#preise"]');
   await sleep(1800);
-  assert.equal(await page.$eval("#chapterNo", (e) => e.textContent), "04");
+  assert.equal(await page.$eval("#chapterNo", (e) => e.textContent), "05");
+  assert.equal(await page.$eval("#chapterOf", (e) => e.textContent), "/06");
   assert.equal(await page.$eval("#chapterTitle", (e) => e.textContent), "Preise");
   await page.keyboard.press("ArrowRight");
   await sleep(1800);
   assert.equal(await page.$eval("#chapterTitle", (e) => e.textContent), "Kontakt");
+  await page.click('.top-nav a[href="#vorgehen"]');
+  await sleep(1800);
+  assert.equal(await page.$eval("#chapterNo", (e) => e.textContent), "04");
+  assert.equal(await page.$eval("#chapterTitle", (e) => e.textContent), "Vorgehen");
 
   await page.evaluate(() => document.getElementById("leistungen").scrollIntoView());
   await sleep(800);

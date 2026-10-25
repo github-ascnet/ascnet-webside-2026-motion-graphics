@@ -1,6 +1,6 @@
 # Todo
 
-Offene Aufgaben, die nicht in der Spezifikation (`docs/sdd/`) stehen, weil sie nicht beauftragt oder zurückgestellt sind. Vor der Umsetzung als Änderung nach `docs/sdd/templates/change.md` anlegen (nächste freie Nummer: CHG-003).
+Offene Aufgaben, die nicht in der Spezifikation (`docs/sdd/`) stehen, weil sie nicht beauftragt oder zurückgestellt sind. Vor der Umsetzung als Änderung nach `docs/sdd/templates/change.md` anlegen (nächste freie Nummer: CHG-004).
 
 ---
 
@@ -82,11 +82,11 @@ Offene Aufgaben, die nicht in der Spezifikation (`docs/sdd/`) stehen, weil sie n
 - `test-http.mjs`, JSON-LD-Test: «4 Services» → «5 Services» und im Typen-Array ein fünftes `"Service"`.
 - `test-browser.mjs`, Test «Navigation …»: nach dem Schliessen des Identity-Fensters `.skill-btn[data-area="ai"]` klicken und 6 Einträge in `#skill-list > div` erwarten.
 
-**e) SDD nachführen (CHG-003, nächste freie Nummern: DEC-026, BP-017, OP-015):**
+**e) SDD nachführen (CHG-004, nächste freie Nummern: DEC-027, BP-018, OP-016):**
 
 - `project_plan.md`: Einleitung (fünf Leistungsfelder), REQ-023 (fünf Karten), REQ-024 (AI 6 Einträge), Stand, offener Punkt für Level und Datenschutz-Zusage.
 - `decisions.md`: DEC-016 ergänzen (Quelle LinkedIn-Profil, BI-Eintrag umbenannt); neue DEC «AI-Methode als fünftes Leistungsfeld, nicht im Kalkulator, Intro unverändert».
-- `build_plan.md`: neues BP; `changes/CHG-003-…md` nach Vorlage; DEC-Index-Tabelle ergänzen.
+- `build_plan.md`: neues BP; `changes/CHG-004-…md` nach Vorlage; DEC-Index-Tabelle ergänzen.
 
 ### Prüfung nach der Umsetzung
 

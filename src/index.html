@@ -173,7 +173,7 @@
                 <span>Innovation verbindet // Wissen bewegt</span>
             </p>
         </div>
-        <!-- HUD-Loader: täuscht das Laden der fünf Kapitel vor -->
+        <!-- HUD-Loader: täuscht das Laden der sechs Kapitel vor -->
         <div class="intro-loader" aria-hidden="true">
             <div class="loader-head">
                 <span>[ SYS ] Kapitel laden</span>
@@ -182,14 +182,15 @@
             <div class="loader-body">
                 <div class="loader-dial">
                     <svg class="loader-ring" id="loaderRing" viewBox="0 0 120 120"></svg>
-                    <div class="loader-center"><b id="loaderCount">00</b><span>/05</span></div>
+                    <div class="loader-center"><b id="loaderCount">00</b><span>/06</span></div>
                 </div>
                 <ol class="loader-rows">
                     <li data-loader-row><span class="lr-no">01</span><span class="lr-name">Start</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
                     <li data-loader-row><span class="lr-no">02</span><span class="lr-name">Mehrwert</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
                     <li data-loader-row><span class="lr-no">03</span><span class="lr-name">Leistungen</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
-                    <li data-loader-row><span class="lr-no">04</span><span class="lr-name">Preise</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
-                    <li data-loader-row><span class="lr-no">05</span><span class="lr-name">Kontakt</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">04</span><span class="lr-name">Vorgehen</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">05</span><span class="lr-name">Preise</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
+                    <li data-loader-row><span class="lr-no">06</span><span class="lr-name">Kontakt</span><span class="lr-bar"></span><span class="lr-pct">0</span><span class="lr-st">WARTE</span></li>
                 </ol>
             </div>
         </div>
@@ -208,6 +209,7 @@
         <nav class="top-nav hidden md:flex" aria-label="Kapitel">
             <a href="#mehrwert">mehrwert <i aria-hidden="true">↗</i></a>
             <a href="#leistungen">leistungen <i aria-hidden="true">↗</i></a>
+            <a href="#vorgehen">vorgehen <i aria-hidden="true">↗</i></a>
             <a href="#preise">preise <i aria-hidden="true">↗</i></a>
             <a href="#kontakt">kontakt <i aria-hidden="true">↗</i></a>
         </nav>
@@ -224,8 +226,9 @@
                 <li><a href="#hero"><em>01</em><span>Start</span><i aria-hidden="true">↗</i></a></li>
                 <li><a href="#mehrwert"><em>02</em><span>Mehrwert</span><i aria-hidden="true">↗</i></a></li>
                 <li><a href="#leistungen"><em>03</em><span>Leistungen</span><i aria-hidden="true">↗</i></a></li>
-                <li><a href="#preise"><em>04</em><span>Preise</span><i aria-hidden="true">↗</i></a></li>
-                <li><a href="#kontakt"><em>05</em><span>Kontakt</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#vorgehen"><em>04</em><span>Vorgehen</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#preise"><em>05</em><span>Preise</span><i aria-hidden="true">↗</i></a></li>
+                <li><a href="#kontakt"><em>06</em><span>Kontakt</span><i aria-hidden="true">↗</i></a></li>
             </ul>
             <div class="menu-foot">
                 <a href="#kontakt" class="btn btn-line w-full">Kontakt aufnehmen</a>
@@ -238,7 +241,7 @@
         <div class="dock-inner">
             <div class="dock-chapter" aria-hidden="true">
                 <span class="lamp"></span>
-                <span class="dock-no"><b id="chapterNo">01</b><span id="chapterOf">/05</span></span>
+                <span class="dock-no"><b id="chapterNo">01</b><span id="chapterOf">/06</span></span>
                 <span class="dock-title hidden md:inline-block" id="chapterTitle">Start</span>
             </div>
             <div class="tl-track" id="tlTrack">
@@ -281,7 +284,7 @@
             <div class="container-x">
                 <header class="sec-head" data-reveal>
                     <span class="sec-tag">[ 02 ] ( Mehrwert )</span>
-                    <span class="sec-count">002/005</span>
+                    <span class="sec-count">002/006</span>
                 </header>
                 <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
                     <div>
@@ -306,7 +309,7 @@
             <div class="container-x">
                 <header class="sec-head" data-reveal>
                     <span class="sec-tag">[ 03 ] ( Leistungen )</span>
-                    <span class="sec-count">003/005</span>
+                    <span class="sec-count">003/006</span>
                 </header>
                 <h2 class="h2 mb-12" data-reveal>Vier Felder <em>ein</em> // Partner</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -338,12 +341,53 @@
             </div>
         </section>
 
-        <!-- 04: Preise -->
+        <!-- 04: Vorgehen -->
+        <section id="vorgehen" data-scene data-scene-title="Vorgehen" class="section">
+            <div class="container-x">
+                <header class="sec-head" data-reveal>
+                    <span class="sec-tag">[ 04 ] ( Vorgehen )</span>
+                    <span class="sec-count">004/006</span>
+                </header>
+                <div class="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-end mb-10">
+                    <h2 class="h2" data-reveal>Erst <em>verstehen</em> // dann bauen</h2>
+                    <p class="lead lg:mb-2" data-reveal style="--reveal-delay:0.15s">Jedes Projekt beginnt mit einer ehrlichen Bestandsaufnahme. Danach wissen Sie, was zu tun ist, was es kostet und wer was verantwortet – bevor die erste Konfiguration geändert oder die erste Zeile Code geschrieben wird.</p>
+                </div>
+                <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <li class="frame service-card step-card" data-reveal style="--reveal-delay:0s">
+                        <div class="service-top"><span>[ 01/04 ]</span><i aria-hidden="true">→</i></div>
+                        <h3>Analyse</h3>
+                        <p>Wir nehmen den Ist-Zustand auf: Systeme, Abhängigkeiten, Risiken. Der Befund ist auch ohne uns verwendbar.</p>
+                        <p class="step-out"><span aria-hidden="true">→</span> Bestandsaufnahme &amp; Risikoliste</p>
+                    </li>
+                    <li class="frame service-card step-card" data-reveal style="--reveal-delay:0.08s">
+                        <div class="service-top"><span>[ 02/04 ]</span><i aria-hidden="true">→</i></div>
+                        <h3>Konzept</h3>
+                        <p>Ziel, Vorgehen und Aufwand werden schriftlich festgehalten. Entscheide sind nachvollziehbar – nicht nur im Kopf eines Beraters.</p>
+                        <p class="step-out"><span aria-hidden="true">→</span> Konzept &amp; Aufwandschätzung</p>
+                    </li>
+                    <li class="frame service-card step-card" data-reveal style="--reveal-delay:0.16s">
+                        <div class="service-top"><span>[ 03/04 ]</span><i aria-hidden="true">→</i></div>
+                        <h3>Umsetzung</h3>
+                        <p>Schrittweise, testbar, mit Rückfallebene. Sie sehen Zwischenstände, nicht erst das Ende.</p>
+                        <p class="step-out"><span aria-hidden="true">→</span> Getestete Lösung &amp; Protokoll</p>
+                    </li>
+                    <li class="frame service-card step-card" data-reveal style="--reveal-delay:0.24s">
+                        <div class="service-top"><span>[ 04/04 ]</span><i aria-hidden="true">→</i></div>
+                        <h3>Übergabe</h3>
+                        <p>Dokumentation, Schulung, Übergabe an Ihren Betrieb. Ziel: Ihr Team führt die Lösung selbst weiter.</p>
+                        <p class="step-out"><span aria-hidden="true">→</span> Betriebsdokumentation &amp; Workshop</p>
+                    </li>
+                </ol>
+                <p class="step-foot" data-reveal style="--reveal-delay:0.3s">schriftlich // schrittweise // übergabefähig</p>
+            </div>
+        </section>
+
+        <!-- 05: Preise -->
         <section id="preise" data-scene data-scene-title="Preise" class="section">
             <div class="container-x">
                 <header class="sec-head" data-reveal>
-                    <span class="sec-tag">[ 04 ] ( Preise )</span>
-                    <span class="sec-count">004/005</span>
+                    <span class="sec-tag">[ 05 ] ( Preise )</span>
+                    <span class="sec-count">005/006</span>
                 </header>
                 <div class="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-end mb-10">
                     <h2 class="h2" data-reveal>Preise <em>transparent</em> // kalkuliert</h2>
@@ -405,12 +449,12 @@
             </div>
         </section>
 
-        <!-- 05: Kontakt -->
+        <!-- 06: Kontakt -->
         <section id="kontakt" data-scene data-scene-title="Kontakt" class="section">
             <div class="container-x">
                 <header class="sec-head" data-reveal>
-                    <span class="sec-tag">[ 05 ] ( Kontakt )</span>
-                    <span class="sec-count">005/005</span>
+                    <span class="sec-tag">[ 06 ] ( Kontakt )</span>
+                    <span class="sec-count">006/006</span>
                 </header>
                 <!-- Formular unten bündig mit der Karte -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:items-end">

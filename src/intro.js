@@ -2,8 +2,8 @@
 // Ablauf: Die Fasern wachsen vom Bündel zu ihren Spitzen (0–3.9 s). Dazu
 // meldet ein Protokoll die vier Kompetenzfelder als "verbunden"
 // (0.3–2.9 s), danach erscheint die Wortmarke (3.05–4.55 s). Ein Zähler
-// läuft bis 100 %. Parallel lädt ein HUD-Loader scheinbar die fünf Kapitel
-// (0.35–3.9 s). Ab 4.6 s blendet die Sequenz aus und gibt den Hero frei.
+// läuft bis 100 %. Parallel lädt ein HUD-Loader scheinbar die sechs Kapitel
+// (0.35–4.15 s). Ab 4.6 s blendet die Sequenz aus und gibt den Hero frei.
 // Einmal pro Session, überspringbar, nie bei reduzierter Bewegung.
 
 const prefersReducedMotion = window.matchMedia(
@@ -17,7 +17,7 @@ const DONE_AT = 5300;
 
 // Loader: Start des ersten Kapitels, Versatz und Ladedauer je Kapitel (s)
 const ROW_START = 0.35;
-const ROW_STEP = 0.62;
+const ROW_STEP = 0.55;
 const ROW_DUR = 1.05;
 const BLOCKS = 10;
 const RING_R = 50;
@@ -31,7 +31,7 @@ function createLoader() {
   const stateEl = document.getElementById("loaderState");
   if (!rows.length) return () => {};
 
-  // Ring: fünf Segmente, je eine Spur und eine Füllung
+  // Ring: ein Segment je Kapitel, je eine Spur und eine Füllung
   const C = 2 * Math.PI * RING_R;
   const seg = C / rows.length - RING_GAP;
   let svg = `<circle class="ring-ticks" cx="60" cy="60" r="57"/><circle class="ring-inner" cx="60" cy="60" r="40"/><g transform="rotate(-90 60 60)">`;

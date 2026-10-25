@@ -1,6 +1,6 @@
 # project_plan.md – ascnet.ch (Future-State)
 
-Rückwärts erstellte Spezifikation (SDD-Modus **INIT**). Stand: 17.10.2026 (nachgeführt mit CHG-002), Repository-Stand `3134cd0`.
+Rückwärts erstellte Spezifikation (SDD-Modus **INIT**). Stand: 25.10.2026 (nachgeführt mit CHG-002 und CHG-003), Repository-Stand `3134cd0`.
 
 **Lesehilfe:** Diese Datei beschreibt das **Sollbild** des heute live laufenden Standes. Es wurde aus dem Ist-Zustand und aus den Aufträgen der Projektleitung abgeleitet, nicht umgekehrt. Aussagen tragen eine Herkunftsmarke:
 
@@ -32,7 +32,7 @@ Zielgruppe: Unternehmenskunden, Interessenten und Projektpartner im deutschsprac
 
 ## 2. Scope und Nicht-Scope
 
-**Im Scope (Ist):** eine Startseite mit fünf Kapiteln, Impressum, Datenschutzerklärung, AGB, 404-Seite, Kontaktformular mit serverseitigem Versand, Karte, SEO-Grundlagen, Besucherstatistik über Cloudflare.
+**Im Scope (Ist):** eine Startseite mit sechs Kapiteln, Impressum, Datenschutzerklärung, AGB, 404-Seite, Kontaktformular mit serverseitigem Versand, Karte, SEO-Grundlagen, Besucherstatistik über Cloudflare.
 
 **Nicht im Scope** (bewusst nicht vorhanden bzw. ausdrücklich ausgeschlossen):
 
@@ -63,21 +63,22 @@ Jede Anforderung nennt Herkunft, die massgebende Entscheidung (DEC), das Arbeits
 | ID | Anforderung | Herkunft | DEC | BP | Abnahme |
 |---|---|---|---|---|---|
 | REQ-010 | Animierter Hintergrund **„Future-State“**: Glasfaser-Bündel von oben links, Wolke leuchtender Spitzen rechts der Mitte. Stränge und Lichtperlen **hellblau**; grosse unscharfe Bokeh-Scheiben und feiner Staub im Hintergrund golden bzw. neutral. Echtzeit-Berechnung per WebGL, keine Videodatei. | `[Auftrag]` `[Code]` `src/fibers.js` | DEC-002, DEC-003 | BP-002 | 220 Fasern à 400 Stützpunkte (Handy 120 à 260), 40 Bokeh, 800 Staub; reagiert auf Scroll, Zeiger, Kapitelwechsel |
-| REQ-011 | **Intro** von ca. 5 Sekunden: Fasern wachsen, Protokoll „verbunden“ für die vier Kompetenzfelder, Wortmarke „(ASCNET_)“, Prozentzähler bis 100 %, **Kapitel-Loader** (Ring mit fünf Segmenten, fünf Zeilen mit Blockbalken, Status WARTE/LÄDT/OK, Abschluss BEREIT). Prozentwerte ohne führende Nullen (dreistellig erst ab 100 %). | `[Auftrag]` `[Code]` `src/intro.js` | DEC-004 | BP-003 | Seite nach 5300 ms frei (`DONE_AT`), Ausblendbeginn 4600 ms; gemessen: Seite nach ca. 5 s bedienbar |
+| REQ-011 | **Intro** von ca. 5 Sekunden: Fasern wachsen, Protokoll „verbunden“ für die vier Kompetenzfelder, Wortmarke „(ASCNET_)“, Prozentzähler bis 100 %, **Kapitel-Loader** (Ring mit sechs Segmenten, sechs Zeilen mit Blockbalken, Status WARTE/LÄDT/OK, Abschluss BEREIT). Prozentwerte ohne führende Nullen (dreistellig erst ab 100 %). | `[Auftrag]` `[Code]` `src/intro.js` | DEC-004 | BP-003 | Seite nach 5300 ms frei (`DONE_AT`), Ausblendbeginn 4600 ms; gemessen: Seite nach ca. 5 s bedienbar |
 | REQ-012 | Intro läuft **einmal pro Browser-Sitzung** (`sessionStorage` `ascnet-fs-intro-seen`), ist überspringbar (Button, Klick, Enter, Leertaste, Escape), entfällt bei „reduzierter Bewegung“. `?intro` in der Adresse erzwingt es. Kein sichtbarer Link dafür im Footer. | `[Auftrag]` `[Code]` | DEC-004 | BP-003 | Mit gesetztem Schlüssel kein Intro; mit `?intro` Intro läuft, Parameter wird aus der Adresse entfernt |
-| REQ-013 | **Navigation unten (Dock)**: Kapitelnummer, Kapitelname, Timeline mit Kapitelmarkern und ziehbarem Abspielkopf, Schalter „Motion“, Fortschritt in %. Oben Kapitel-Links (Desktop) bzw. Menü-Overlay (Handy). Pfeiltasten links/rechts springen zum vorherigen/nächsten Kapitel. Beim Sprung blendet der Inhalt kurz aus und ein Lichtimpuls läuft durch die Fasern. | `[Auftrag]` `[Code]` `src/chapters.js` | DEC-007 | BP-004 | Sprung zu „Preise“ landet bei `y` des Kapitels, Anzeige „04/05 Preise“; ArrowRight → „Kontakt“ |
+| REQ-013 | **Navigation unten (Dock)**: Kapitelnummer, Kapitelname, Timeline mit Kapitelmarkern und ziehbarem Abspielkopf, Schalter „Motion“, Fortschritt in %. Oben Kapitel-Links (Desktop) bzw. Menü-Overlay (Handy). Pfeiltasten links/rechts springen zum vorherigen/nächsten Kapitel. Beim Sprung blendet der Inhalt kurz aus und ein Lichtimpuls läuft durch die Fasern. | `[Auftrag]` `[Code]` `src/chapters.js` | DEC-007 | BP-004 | Sprung zu „Preise“ landet bei `y` des Kapitels, Anzeige „05/06 Preise“; ArrowRight → „Kontakt“ |
 | REQ-014 | Schalter **„Motion“** hält die Hintergrund-Animation an (`localStorage` `ascnet-motion`). `prefers-reduced-motion` schaltet Intro, Sprung-Blenden und Animationen ab; die Szene wird dann als Standbild gezeigt. | `[Code]` | DEC-004 | BP-002, BP-004 | Mit reduzierter Bewegung kein Intro, Inhalte sofort sichtbar |
 
 ### 3.3 Inhalt
 
 | ID | Anforderung | Herkunft | DEC | BP | Abnahme |
 |---|---|---|---|---|---|
-| REQ-020 | Fünf Kapitel mit festen Ankern: `#hero` (Start), `#mehrwert`, `#leistungen`, `#preise`, `#kontakt`, je mit `data-scene` und `data-scene-title`. | `[Code]` `src/index.html` | DEC-007 | BP-001, BP-004 | Alle fünf Sektionen vorhanden, Marker in der Timeline |
+| REQ-020 | Sechs Kapitel mit festen Ankern: `#hero` (Start), `#mehrwert`, `#leistungen`, `#vorgehen`, `#preise`, `#kontakt`, je mit `data-scene` und `data-scene-title`. | `[Code]` `src/index.html` | DEC-007, DEC-026 | BP-001, BP-004, BP-017 | Alle sechs Sektionen vorhanden, Marker in der Timeline |
 | REQ-021 | Hero: Slogan „Innovation verbindet // Wissen bewegt“ als einzige H1, Kurztext, Button „Kontakt aufnehmen“, Kurzprofil „20+ Jahre“. | `[Code]` `[Auftrag]` | DEC-015 | BP-005 | Eine H1 pro Seite |
 | REQ-022 | Mehrwert: „Ihr Nutzen ist unser massstab“ mit Kernaussage 20+ Jahre, Orientierung, Klarheit, Entscheidungsstärke. | `[Code]` | – | BP-001, BP-005 | Text vorhanden |
 | REQ-023 | Vier Leistungskarten: **Collaboration-Management**, **Identity-Management**, **Development**, **Business Intelligence**. Der Kartentext nennt die belegten Technologien (Exchange On-Prem/Hybrid, Teams; Active Directory, Entra ID, ADFS, MFA, SSO; .NET (C#), JavaScript, React, PowerShell; MS SQL Server, Data Warehouse, SSIS/SSAS, Power BI). | `[Auftrag]` (Satzteil-Ergänzung) `[Code]` | DEC-016 | BP-001, BP-011 | Begriffe stehen im statischen HTML und sind in `skills.json` belegt |
 | REQ-024 | **Skills-Fenster** je Leistung („( Details )“): Liste aus `skills.json` (Collaboration 8, Identity 8, Development 6, BI 6 Einträge) mit Level 1–5 und Legende. Öffnet per Button, schliesst per ✕, Hintergrund-Klick und Escape, stellt den Fokus wieder her. | `[Code]` `src/skills.js`, `src/skills.json` | DEC-016 | BP-001 | Fenster öffnet für alle vier Bereiche |
 | REQ-025 | Firmenangaben: ASCNET Solutions GmbH, **c/o Sarya AG, Chamerstrasse 174, 6300 Zug**. | `[Auftrag]` `[Code]` | DEC-021 | BP-006 | Adresse im Kontaktbereich, im JSON-LD und im Impressum identisch |
+| REQ-026 | **Vorgehen** (`#vorgehen`, CHG-003) zwischen Leistungen und Preise: H2 „Erst verstehen // dann bauen“, Lead, vier Schritte als Karten (Analyse, Konzept, Umsetzung, Übergabe) mit je einem Ergebnis am Kartenfuss, Fusszeile „schriftlich // schrittweise // übergabefähig“. Keine Details-Buttons, kein Eintrag im JSON-LD und im Kalkulator. | `[Auftrag]` `[Code]` `src/index.html` | DEC-026 | BP-017 | Kapitel vorhanden, Dock zeigt „04/06 Vorgehen“; 4 → 2 → 1 Spalten ohne Überlauf; Aussagen von der Projektleitung bestätigt (OP-015) |
 
 ### 3.4 Funktionen
 
@@ -139,7 +140,7 @@ Alle Dateien aus `git ls-files` (Stand `0e6c95f`):
 
 | Datei | Verantwortung |
 |---|---|
-| `src/index.html` | Startseite: Head (SEO, OG, JSON-LD), Intro-Markup, Header, Dock, fünf Kapitel, Footer, Skills-Modal, Toast-Container, Skript-Einbindung |
+| `src/index.html` | Startseite: Head (SEO, OG, JSON-LD), Intro-Markup, Header, Dock, sechs Kapitel, Footer, Skills-Modal, Toast-Container, Skript-Einbindung |
 | `src/impressum.html`, `src/datenschutz.html`, `src/agb.html` | Rechtsseiten (Einstieg `legal.js`) |
 | `src/404.html` | Fehlerseite (Einstieg `legal.js`, noindex) |
 | `src/main.js` | Einstieg der Startseite: Kalkulator, Scroll-Reveal, Tilt-Karten, Init von Fasern, Kapitel, Kontaktformular |
@@ -241,3 +242,4 @@ Diese Punkte wurden beim INIT festgestellt und **nicht** stillschweigend korrigi
 | OP-012 | Lokale Sicherungen früherer Entwurfsstände (`_backup_*`) liegen ausserhalb des Gits und sind absichtlich nicht dokumentiert. | Hinweis | `[Auftrag]` |
 | OP-014 | **AGB (`/agb`) nicht juristisch geprüft.** Der Text ist ein Entwurf (Haftungsgrenze CHF 100'000, Gewährleistung 12 Monate, Verzugszins 5 %, Gerichtsstand Zug sind Annahmen der Entwurfsphase). Der Link in Ziffer 14 zeigt auf die Kopie des Kantons Solothurn; offizielle DVS-Quelle noch zu ersetzen. Vor dem Verweis in Offerten prüfen lassen. | offene Aufgabe | `[Auftrag]` |
 | OP-013 | `seo-prompt.txt` (Auftrag der SEO-Phase) liegt nur lokal und ist nicht im Git. | Hinweis | `[Code]` `.gitignore` |
+| OP-015 | **Kapitel „Vorgehen“: Aussagen bestätigen.** „Rückfallebene“, „Zwischenstände“, „Workshop“ und „Befund auch ohne uns verwendbar“ sind Zusagen an Kunden (analog DEC-016) und müssen der gelebten Praxis entsprechen; sonst Text abschwächen. Optionaler Satz zur spezifikationsgetriebenen Arbeit mit AI bleibt bis zum Entscheid zu Todo.md Punkt 1 weggelassen. | offene Aufgabe | `[Auftrag]` |
